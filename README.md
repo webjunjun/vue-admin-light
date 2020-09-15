@@ -20,6 +20,6 @@ yarn serve
 yarn build
 ```
 
-### License
+## License
 
 [MIT](https://github.com/webjunjun/vue-admin-light/blob/master/LICENSE)
