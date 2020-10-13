@@ -59,14 +59,14 @@ npm run build
 ```
 // 属性
 columns: 列名 Array
-		prop: 列里要填入的表格字段 String
-		label: 列显示的名字 String
-		width: 列宽 number
-		isTip: 该列是否开启溢出截断省略提示 Boolean，默认false
-		isTag: 是否标记为tag Boolean，默认false
-		type: tag类型 String 具体参见element的tag组件文档，isTag为true时生效，默认空
-		btnArr: 是否操作列 Boolean，默认false
-		fixed: 是否固定列 Boolean，默认false
+    prop: 列里要填入的表格字段 String
+    label: 列显示的名字 String
+    width: 列宽 number
+    isTip: 该列是否开启溢出截断省略提示 Boolean，默认false
+    isTag: 是否标记为tag Boolean，默认false
+    type: tag类型 String 具体参见element的tag组件文档，isTag为true时生效，默认空
+    btnArr: 是否操作列 Boolean，默认false
+    fixed: 是否固定列 Boolean，默认false
 tableData: 表格数据
 isMark: 是否高亮第一行 Boolean，默认false
 isMultiCheck: 是否开启多选 Boolean，默认true
