@@ -11,6 +11,7 @@
             <el-table-column
                 v-if="isMultiCheck"
                 type="selection"
+                :selectable="checkSelectable"
                 width="55"
                 fixed="left">
             </el-table-column>
@@ -59,7 +60,7 @@
  *     width: 列宽 number
  *     isTip: 该列是否开启溢出截断省略提示 boolean
  *     isTag: 是否标记为tag boolean
- *     type: tag类型 string 具体参见element的tag组件文档
+ *     type: tag类型 string 具体参见element的tag组件文档，isTag为true时生效
  *     btnArr: 是否操作列 boolean
  *     fixed: 是否固定列
  * tableData: 表格数据
@@ -88,7 +89,7 @@ export default {
         },
         isMultiCheck: {
             type: Boolean,
-            default: () => true
+            default: () => false
         },
         loading: {
             type: Boolean,
@@ -106,6 +107,10 @@ export default {
             type: Boolean,
             default: () => true
         },
+        defaultPage: {
+            type: Number,
+            default: () => 1
+        }
     },
     watch: {
         tableData: {
@@ -124,8 +129,17 @@ export default {
             deep: true,
             handler(val, oldVal) {
                 this.total = val
+                if (this.defaultPage !== this.currentPage) {
+                    this.currentPage = this.defaultPage
+                }
             }
         },
+        defaultPage: {
+            deep: true,
+            handler(val, oldVal) {
+                this.defaultPage = val
+            }
+        }
     },
     data() {
         return {
@@ -147,6 +161,13 @@ export default {
                 return 'success-row';
             }
             return '';
+        },
+        checkSelectable(row, index) {
+            if (row.forbidSelected) {
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 }

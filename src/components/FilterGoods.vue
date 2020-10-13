@@ -6,14 +6,16 @@
                     <h3 class="l_filter_group_title">已选</h3>
                     <div class="l_selected_content clearfix">
                         <div class="l_filter_group_content select_content">
-                            <div class="breadcrumbs_cell" v-for="(chooseItem, cIdx) in chooseList" :key="cIdx">
-                                <div class="breadcrumbs_cell_title" :title="chooseItem.children.join(',')">
-                                    {{chooseItem.type}}：<span>{{chooseItem.children.join(',')}}</span>
+                            <el-tooltip v-for="(chooseItem, cIdx) in chooseList" :key="cIdx" effect="dark" :content="chooseItem.children.join(',')" placement="top">
+                                <div class="breadcrumbs_cell">
+                                    <div class="breadcrumbs_cell_title">
+                                        {{chooseItem.type}}：<span>{{chooseItem.children.join(',')}}</span>
+                                    </div>
+                                    <a class="l_filter_selected_close" href="javascript:;" @click="clearSelf(cIdx)">
+                                        <i class="el-icon-close"></i>
+                                    </a>
                                 </div>
-                                <a class="l_filter_selected_close" href="javascript:;" @click="clearSelf(cIdx)">
-                                    <i class="el-icon-close"></i>
-                                </a>
-                            </div>
+                            </el-tooltip>
                         </div>
                     </div>
                     <div class="l_delete_selected" @click="clearSelected">清空已选条件</div>
@@ -66,77 +68,82 @@ export default {
     data() {
         return {
             goodsList: [{
-                type: '省份',
+                type: '表单类型',
                 isMulti: false,
                 isExpand: false,
                 data: [{
                     id: 1,
-                    name: '湖北',
+                    name: '用户表',
                     isCheck: false
                 }, {
                     id: 2,
-                    name: '安徽',
+                    name: '订单表',
                     isCheck: false
                 }, {
                     id: 3,
-                    name: '山西',
+                    name: '流量表',
                     isCheck: false
                 }, {
                     id: 4,
-                    name: '内蒙古',
+                    name: '经营表',
                     isCheck: false
                 }, {
                     id: 5,
-                    name: '湖南',
-                    isCheck: false
-                }, {
-                    id: 6,
-                    name: '黑龙江',
-                    isCheck: false
-                }, {
-                    id: 7,
-                    name: '北京',
-                    isCheck: false
-                }, {
-                    id: 8,
-                    name: '浙江',
-                    isCheck: false
-                }, {
-                    id: 9,
-                    name: '吉林',
-                    isCheck: false
-                }, {
-                    id: 10,
-                    name: '宁夏',
+                    name: '运营用户表',
                     isCheck: false
                 }]
             }, {
-                type: '客户基本信息',
+                type: '时间类型',
                 isMulti: false,
                 isExpand: false,
                 data: [{
                     id: 1,
-                    name: '信息1',
+                    name: '月表',
                     isCheck: false
                 }, {
                     id: 2,
-                    name: '信息2',
+                    name: '月维度客户表',
                     isCheck: false
                 }, {
                     id: 3,
-                    name: '信息3',
+                    name: '月维度项目表',
                     isCheck: false
                 }, {
                     id: 4,
-                    name: '信息4',
+                    name: '日表',
                     isCheck: false
                 }, {
                     id: 5,
-                    name: '信息5',
+                    name: '日维度客户表',
                     isCheck: false
                 }, {
                     id: 6,
-                    name: '信息6',
+                    name: '日维度项目表',
+                    isCheck: false
+                }]
+            }, {
+                type: '订单类型',
+                isMulti: false,
+                isExpand: false,
+                data: [{
+                    id: 1,
+                    name: '支付成功',
+                    isCheck: false
+                }, {
+                    id: 2,
+                    name: '支付失败',
+                    isCheck: false
+                }, {
+                    id: 3,
+                    name: '免费',
+                    isCheck: false
+                }, {
+                    id: 4,
+                    name: '付费退款',
+                    isCheck: false
+                }, {
+                    id: 5,
+                    name: '付费',
                     isCheck: false
                 }]
             }],
@@ -186,7 +193,7 @@ export default {
                         break;
                     }
                 }
-                if (curIndex) {
+                if (curIndex !== null) {
                     const tempIdsArr = chooseData[curIndex].idsArr
                     for (let j = 0; j < goodsData.data.length; j++) {
                         const curId = goodsData.data[j].id
@@ -220,7 +227,7 @@ export default {
                 }
             }
             let tempData = {
-                type: '品牌',
+                type: goodsData.type,
                 children: [],
                 idsArr: []
             }
@@ -235,7 +242,7 @@ export default {
                 this.clearSelf(curIndex)
             } else {
                 // 替换这一行全部选中
-                if (curIndex) {
+                if (curIndex !== null) {
                     chooseData[curIndex] = tempData
                 } else {
                     chooseData.push(tempData)
