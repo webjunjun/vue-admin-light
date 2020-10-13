@@ -44,7 +44,14 @@ const routes = [{
 }, {
 	path: '/',
     name: 'Layout',
-    component: Layout,
+	component: Layout,
+	redirect: '/admin/index',
+	children: [{
+		path: '/admin/index',
+		name: 'AdminIndex',
+		component: () => import('@/views/admin/admin.vue'),
+		meta: {title: '后台', islogin: false}
+	}]
 }]
 
 const router = new Router({
