@@ -1,9 +1,6 @@
-# vue项目开箱即用前后台框架
-
-> 该项目是基于vue-cli2.0这个大版本搭建的环境。
-
+# vue3项目开箱即用前后台框架
 ## 技术栈
-vue + vue-router + vuex + axios + element-ui
+vue + vue-router + vuex + axios + element-plus
 
 ## 项目安装与部署
 
