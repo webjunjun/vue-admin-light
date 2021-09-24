@@ -1,6 +1,6 @@
 # vue项目开箱即用前后台框架
 
-> 该项目是基于vue-cli2.0这个大版本搭建的环境。
+> 该项目是基于vue-cli4这个大版本搭建的环境。使用的是vue2这个大版本
 
 ## 技术栈
 vue + vue-router + vuex + axios + element-ui

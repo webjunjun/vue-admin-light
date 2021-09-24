@@ -1,43 +1,28 @@
 <template>
-	<div id="app">
-		<router-view />
-	</div>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue'
+
 export default {
-	name: 'App',
-	// created() {
-	// 	// 页面加载时读取缓存数据
-	// 	// 
-	// 	// 挂载监听页面刷新
-	// 	window.addEventListener("beforeunload",() => {
-	// 		// 
-	// 	})
-	// }
+  name: 'App',
+  components: {
+    HelloWorld
+  }
 }
 </script>
 
-<style lang="scss">
-@import url('../static/iconfont/iconfont.css');
+<style>
 #app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-html,body,#app{
-	padding: 0px;
-	margin: 0px;
-	height: 100%;
-}
-.clearfix:after{
-    content: ' ';
-    height: 0;
-    display: block;
-    clear: both;
-    visibility: hidden;
-}
-.clearfix{
-	zoom: 1;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
