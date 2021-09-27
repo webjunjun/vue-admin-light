@@ -3,7 +3,8 @@
 > 该项目是基于vue-cli4这个大版本搭建的环境。使用的是vue2这个大版本
 
 ## 技术栈
-vue + vue-router + vuex + axios + element-ui
+vue + vue-router + vuex + axios + element-ui  
+支持scss和less两种css预处理器对css进行处理
 
 ## 项目安装与部署
 
