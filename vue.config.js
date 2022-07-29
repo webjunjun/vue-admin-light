@@ -1,6 +1,8 @@
 const path = require('path')
+const { defineConfig } = require('@vue/cli-service')
 
-module.exports = {
+module.exports = defineConfig({
+    transpileDependencies: true,
     publicPath: process.env.NODE_ENV === 'production' ? '/' : '/', // 部署项目在哪个目录下
     outputDir: 'dist', // 编译后所在目录
     assetsDir: 'static', // 编译后静态资源目录，相对outputDir而言
@@ -36,7 +38,7 @@ module.exports = {
         if (process.env.NODE_ENV === 'production') {
             config.devtool = "cheap-module-source-map";
         } else {
-            config.devtool = "cheap-module-eval-source-map";
+            config.devtool = "eval-cheap-module-source-map";
         }
     },
     devServer: {
@@ -55,4 +57,4 @@ module.exports = {
             }
         }
     }
-}
+})
