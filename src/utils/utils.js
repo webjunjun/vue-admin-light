@@ -9,7 +9,8 @@
 const timetrans = (times, num) => {
     let setNum = num || 16;
     let date = new Date(times + 8 * 3600 * 1000); // 增加8小时
-    return date.toJSON().substr(0, setNum).replace('T', ' ');
+    // date.toJSON().substr(0, setNum).replace('T', ' ');
+    return date.toJSON().substring(0, setNum).replace('T', ' ');
 }
 
 /**
