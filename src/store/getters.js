@@ -1,27 +1,17 @@
-const token = state => {
-    return state.token
-}
+const token = (state) => state.token
 
-const userInfo = state => {
-    return state.userInfo
-}
+const userInfo = (state) => state.userInfo
 
-const aside_menu = state => {
-    return state.aside_menu
-}
+const asideMenu = (state) => state.asideMenu
 
-const routes = state => {
-    return state.routes
-}
+const routes = (state) => state.routes
 
-const leftWidth = state => {
-    return state.leftWidth
-}
+const leftWidth = (state) => state.leftWidth
 
 module.exports = {
-    token,
-    userInfo,
-    aside_menu,
-    routes,
-    leftWidth
+  token,
+  userInfo,
+  asideMenu,
+  routes,
+  leftWidth
 }

@@ -16,12 +16,12 @@
 
 <script>
 export default {
-    name: 'menuCell',
-    props: {
-        menu: {
-            type: Object,
-            default: () => {}
-        }
+  name: 'menuCell',
+  props: {
+    menu: {
+      type: Object,
+      default: () => {}
     }
+  }
 }
 </script>

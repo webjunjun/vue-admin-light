@@ -1,0 +1,16 @@
+# 控制 .editorconfig 是否生效的字段
+root = true
+# 匹配的文件类型
+[*.{js,jsx,ts,tsx,vue}]
+# 缩进风格 可选space | tab
+indent_style = space
+# 缩进的空格数
+indent_size = 4
+# 结尾换行符，可选lf | cr | crlf
+end_of_line = lf
+# 设为true表示删除一行中的前后空格
+trim_trailing_whitespace = true
+# 设为true表示使文件以一个空白行结尾
+insert_final_newline = true
+# 每行最大字符数
+max_line_length = 120

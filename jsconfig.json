@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es5", // 指定要使用的库
+    "module": "esnext", // 生成模块代码时指定模块系统
+    "baseUrl": "./", // 项目的基础目录
+    "moduleResolution": "node", // 指定如何解析模块以进行导入
+    // 模块路径别名映射
+    "paths": {
+      // 解决项目中使用@作为路径别名 导致vscode无法跳转文件的问题
+      "@/*": [
+        "src/*"
+      ]
+    },
+    // 项目需要包含类型定义的库
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  // 排除文件夹 提高编辑器性能
+  "exclude": ["node_modules", "dist", "build"]
+}

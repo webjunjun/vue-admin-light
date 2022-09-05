@@ -8,17 +8,17 @@ Vue.use(Vuex)
 
 // 应用初始状态
 const state = {
-    token: null,
-    userInfo: null,
-    aside_menu: [],
-    routes: null,
-    leftWidth: '200px'
+  token: null,
+  userInfo: null,
+  asideMenu: [],
+  routes: null,
+  leftWidth: '200px'
 }
 
 // 创建 store 实例
 export default new Vuex.Store({
-    actions,
-    getters,
-    state,
-    mutations
+  actions,
+  getters,
+  state,
+  mutations
 })

@@ -15,57 +15,56 @@
 // { id: '010302', pid: '0103', path: '', name: '', icon: '' },
 // { id: '0201', pid: null, path: '', name: '', icon: '' },
 // { id: '0202', pid: '02', path: '', name: '', icon: '' },
-import { routes, asyncRoutes } from './index'
+// import { routes, asyncRoutes } from './index';
+import { asyncRoutes } from './index'
 import store from '../store/index'
 
-let pathArr = []
+const pathArr = []
 
 function filterAsyncMenus(menus, pid, idx) {
-    let tempMenu = menus
-    let menuList = []
-    for (let arrIdx = idx; arrIdx < tempMenu.length; arrIdx++) {
-        if (tempMenu[arrIdx].pid === pid) {
-            // 生成一个一维的路径数组，权限路由需要
-            pathArr.push(tempMenu[arrIdx].path)
-            // 生成菜单
-            menuList.push(tempMenu[arrIdx])
-            tempMenu[arrIdx].children = filterAsyncMenus(tempMenu, tempMenu[arrIdx].id, arrIdx)
-        }
+  const tempMenu = menus
+  const menuList = []
+  for (let arrIdx = idx; arrIdx < tempMenu.length; arrIdx++) {
+    if (tempMenu[arrIdx].pid === pid) {
+      // 生成一个一维的路径数组，权限路由需要
+      pathArr.push(tempMenu[arrIdx].path)
+      // 生成菜单
+      menuList.push(tempMenu[arrIdx])
+      tempMenu[arrIdx].children = filterAsyncMenus(tempMenu, tempMenu[arrIdx].id, arrIdx)
     }
-    return menuList
+  }
+  return menuList
 }
 
 function filterAsyncRoutes(route) {
-    let routeArr = []
-    let tempRoute = route
-    tempRoute.forEach((item) => {
-        const equalIdx = pathArr.findIndex((ele) => {
-            return ele === item.path
-        })
-        if (equalIdx !== -1) {
-            if (item.children) {
-                // 如果没匹配到，item的子集会置为空数组
-                item.children = filterAsyncRoutes(item.children)
-            }
-            routeArr.push(item)
-        }
-    })
-    return routeArr
+  const routeArr = []
+  const tempRoute = route
+  tempRoute.forEach((item) => {
+    const equalIdx = pathArr.findIndex((ele) => ele === item.path)
+    if (equalIdx !== -1) {
+      if (item.children) {
+        // 如果没匹配到，item的子集会置为空数组
+        item.children = filterAsyncRoutes(item.children)
+      }
+      routeArr.push(item)
+    }
+  })
+  return routeArr
 }
 
 export function generateRoutes(authArr) {
-    let routerList = authArr
-    // 生成左侧菜单树
-    let accessedMenus = []
-    if (routerList.length > 0) {
-        // 第一次开始取pid，后面取id
-        accessedMenus = filterAsyncMenus(routerList, routerList[0].pid, 0)
-    }
-    store.commit('SET_ASIDE_MENU', accessedMenus)
+  const routerList = authArr
+  // 生成左侧菜单树
+  let accessedMenus = []
+  if (routerList.length > 0) {
+    // 第一次开始取pid，后面取id
+    accessedMenus = filterAsyncMenus(routerList, routerList[0].pid, 0)
+  }
+  store.commit('SET_ASIDE_MENU', accessedMenus)
 
-    // 生成路由
-    const accessedRoutes = filterAsyncRoutes(asyncRoutes)
-    // const allRoutes = accessedRoutes.concat(routes)
-    // 返回路由
-    return accessedRoutes
+  // 生成路由
+  const accessedRoutes = filterAsyncRoutes(asyncRoutes)
+  // const allRoutes = accessedRoutes.concat(routes)
+  // 返回路由
+  return accessedRoutes
 }
