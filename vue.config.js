@@ -1,13 +1,14 @@
-const path = require('path');
-const { defineConfig } = require('@vue/cli-service');
+const path = require('path')
+const { defineConfig } = require('@vue/cli-service')
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080
 const fixRequestBody = function (proxyReq, req, res) {
   // 重写代理的请求头信息
-};
+  console.log(proxyReq, req, res)
+}
 
 module.exports = defineConfig({
-  transpileDependencies: true,
+  transpileDependencies: true, // 对第三方依赖进行编译
   publicPath: process.env.NODE_ENV === 'production' ? '/' : '/', // 部署项目在哪个目录下
   outputDir: 'dist', // 编译后所在目录
   assetsDir: 'static', // 编译后静态资源目录，相对outputDir而言
@@ -15,35 +16,35 @@ module.exports = defineConfig({
   productionSourceMap: false, // 生产环境是否开启sourcemap，默认true是
   lintOnSave: false, // 关闭项目的eslint检查 true || false || 'error'
   chainWebpack: (config) => {
-    const oneOfsMap = config.module.rule('scss').oneOfs.store;
+    const oneOfsMap = config.module.rule('scss').oneOfs.store
     oneOfsMap.forEach((item) => {
       item
         .use('sass-resources-loader')
         .loader('sass-resources-loader')
         .options({
           // 要公用的scss的路径
-          resources: './src/theme/default.scss',
+          resources: './src/theme/default.scss'
         })
-        .end();
-    });
+        .end()
+    })
   },
   configureWebpack: (config) => {
     // 设置项目名
-    config.name = '前端项目脚手架';
+    config.name = '前端项目脚手架'
     Object.assign(config, {
       // 设置别名
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, './src'),
+          '@': path.resolve(__dirname, './src')
         },
-        extensions: ['.js', '.vue', '.json'],
-      },
-    });
+        extensions: ['.js', '.vue', '.json']
+      }
+    })
     // 设置source-map
     if (process.env.NODE_ENV === 'production') {
-      config.devtool = 'cheap-module-source-map';
+      config.devtool = 'cheap-module-source-map'
     } else {
-      config.devtool = 'eval-cheap-module-source-map';
+      config.devtool = 'eval-cheap-module-source-map'
     }
   },
   devServer: {
@@ -61,18 +62,18 @@ module.exports = defineConfig({
         changeOrigin: true, // 开启代理，在本地创建一个虚拟服务端
         ws: false, // 是否启用websocket
         pathRewrite: {
-          '^/api': '',
+          '^/api': ''
         },
         // 重写代理的请求头信息
-        onProxyReq: fixRequestBody,
-      },
+        onProxyReq: fixRequestBody
+      }
     },
     // 出现编译错误时 在浏览器里全屏覆盖
     client: {
       overlay: {
         errors: true,
-        warnings: false,
-      },
-    },
-  },
-});
+        warnings: false
+      }
+    }
+  }
+})
