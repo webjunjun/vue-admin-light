@@ -1,6 +1,6 @@
 <template>
   <el-container direction="vertical">
-    <LayoutHeader></LayoutHeader>
+    <layout-header />
     <el-container>
       <LayoutAside></LayoutAside>
       <el-container
@@ -11,19 +11,19 @@
         <el-main>
           <router-view />
         </el-main>
-        <!-- <LayoutFooter></LayoutFooter> -->
+        <!-- <layout-footer /> -->
       </el-container>
     </el-container>
   </el-container>
 </template>
 <script>
-import LayoutHeader from '@/components/LayoutHeader.vue'
+import LayoutHeader from '@/components/LayoutHeader/index.vue'
 import LayoutAside from '@/components/LayoutAside/index.vue'
-// import LayoutFooter from '@/components/LayoutFooter.vue';
+// import LayoutFooter from '@/components/LayoutFooter/index.vue';
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'layout',
+  name: 'Layout',
   components: {
     LayoutHeader,
     LayoutAside

@@ -11,7 +11,7 @@
       :collapse="isCollapse"
     >
       <menu-cell
-        v-for="route in aside_menu"
+        v-for="route in asideMenu"
         :key="route.path"
         :menu="route"
       ></menu-cell>
@@ -44,7 +44,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['aside_menu', 'leftWidth']),
+    ...mapGetters(['asideMenu', 'leftWidth']),
     themeVariable() {
       return variables
     },

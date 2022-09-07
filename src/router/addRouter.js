@@ -16,7 +16,7 @@
 // { id: '0201', pid: null, path: '', name: '', icon: '' },
 // { id: '0202', pid: '02', path: '', name: '', icon: '' },
 // import { routes, asyncRoutes } from './index';
-import { asyncRoutes } from './index'
+import asyncRoutes from './asyncRoutes'
 import store from '../store/index'
 
 const pathArr = []

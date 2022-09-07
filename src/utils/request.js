@@ -9,7 +9,7 @@ import defaultSetting from './setting'
 const service = axios.create({
   baseURL: process.env.NODE_ENV === 'development' ? defaultSetting.devBaseUrl : defaultSetting.baseUrl,
   // withCredentials: true, // 跨域请求是否携带cookie
-  timeout: 30000 // 请求超时设置
+  timeout: 60000 // 请求超时设置
 })
 
 // request拦截器

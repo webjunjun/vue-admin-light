@@ -44,24 +44,6 @@ export const routes = [{
   meta: { title: '后台', requiresAuth: true }
 }]
 
-export const asyncRoutes = [{
-  path: '/admin',
-  name: 'Admin',
-  component: Layout,
-  redirect: '/admin/index',
-  children: [{
-    path: '/admin/index',
-    name: 'AdminIndex',
-    component: () => import('@/views/admin/admin.vue'),
-    meta: { title: '后台', requiresAuth: true }
-  }, {
-    path: '/admin/test',
-    name: 'AdminTest',
-    component: () => import('@/views/admin/test.vue'),
-    meta: { title: '测试', requiresAuth: true }
-  }]
-}]
-
 const router = new Router({
   // mode: 'history',// 默认hash模式
   routes,
