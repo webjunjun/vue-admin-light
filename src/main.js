@@ -6,6 +6,8 @@ import router from './router/index'
 import store from './store/index'
 
 import 'element-ui/lib/theme-chalk/index.css'
+import 'nprogress/nprogress.css'
+import '@/icons' // 引入icons
 
 // 模拟数据
 require('../mock')

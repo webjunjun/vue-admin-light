@@ -100,11 +100,19 @@ const hidePhone = (phone) => {
   return newPhone
 }
 
+/**
+ * 是否外部链接
+ * @param {string} path
+ * @returns {Boolean}
+ */
+const isExternal = (path) => /^(https?:|mailto:|tel:)/.test(path)
+
 module.exports = {
   timetrans,
   checkCellphone,
   isIdCardNo,
   checkMail,
   transRangeDate,
-  hidePhone
+  hidePhone,
+  isExternal
 }

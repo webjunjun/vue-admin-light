@@ -3,7 +3,7 @@
     <el-form class="login_form" ref="form" :model="form" :rules="rules">
       <div class="title-container">{{ defaultSetting.title }}</div>
       <el-form-item class="login_input" prop="name">
-        <span class="iconfont iconicontouxiang"></span>
+        <svg-icon class="iconfont" icon-class="user" />
         <el-input
           placeholder="请输入用户名"
           v-model.trim="form.name"
@@ -12,7 +12,7 @@
         ></el-input>
       </el-form-item>
       <el-form-item class="login_input remeber_forget" prop="passwd">
-        <span class="iconfont iconsuo"></span>
+        <svg-icon class="iconfont" icon-class="lock" />
         <el-input
           placeholder="请输入密码"
           :type="isShowPwd ? 'text' : 'password'"
@@ -20,11 +20,7 @@
           maxlength="30"
           @keyup.enter.native="handleLogin"
         ></el-input>
-        <span
-          class="control_pwd iconfont"
-          :class="isShowPwd ? 'iconyanjing' : 'iconbiyan'"
-          @click="handleShowPwd"
-        ></span>
+        <svg-icon class="control_pwd" :icon-class="isShowPwd ? 'eyeoff' : 'eye'" @click="handleShowPwd" />
       </el-form-item>
       <el-form-item class="remeber_forget">
         <el-checkbox v-model="form.remember">记住密码</el-checkbox>
@@ -197,6 +193,7 @@ $loginWhite: #fff;
     height: 47px;
     cursor: pointer;
     padding-right: 12px;
+    color: $light-blue;
   }
   .login_btn {
     width: 100%;

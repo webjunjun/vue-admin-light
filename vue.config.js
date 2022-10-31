@@ -1,5 +1,8 @@
 const path = require('path')
 const { defineConfig } = require('@vue/cli-service')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer') // 分析模板依赖大小用的，在开发时打开服务器
+const CompressionWebpackPlugin = require('compression-webpack-plugin') // 打包时压缩代码成gzip，如果服务器开启了gzip可以大大压缩大小
+const WebpackBar = require('webpackbar') // 显示打包进度条
 
 const port = process.env.PORT || 8080
 const fixRequestBody = function (proxyReq, req, res) {
@@ -16,6 +19,11 @@ module.exports = defineConfig({
   productionSourceMap: false, // 生产环境是否开启sourcemap，默认true是
   lintOnSave: false, // 关闭项目的eslint检查 true || false || 'error'
   chainWebpack: (config) => {
+    // 通过 CDN 方式引入资源
+    // config.externals({
+    //   echarts: 'echarts',
+    //   nprogress: 'NProgress'
+    // })
     const oneOfsMap = config.module.rule('scss').oneOfs.store
     oneOfsMap.forEach((item) => {
       item
@@ -27,6 +35,22 @@ module.exports = defineConfig({
         })
         .end()
     })
+    // 解析icon组件的svg图片
+    config.module
+      .rule('svg')
+      .exclude.add(path.resolve(__dirname, 'src/icons'))
+      .end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(path.resolve(__dirname, 'src/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]',
+      })
+      .end()
   },
   configureWebpack: (config) => {
     // 设置项目名
@@ -46,6 +70,36 @@ module.exports = defineConfig({
     } else {
       config.devtool = 'eval-cheap-module-source-map'
     }
+    // 打包进度条
+    const allPlugins = [
+      new WebpackBar({
+        name: process.env.NODE_ENV === 'production' ? '正在打包' : '正在启动',
+        color: '#fa8c16'
+      })
+    ]
+    config.plugins.push(...allPlugins)
+    if(process.env.NODE_ENV !== 'production'){
+      // 非生产环境打开依赖分析
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          openAnalyzer: process.env.NODE_ENV === 'production' ? false : true, // 是否打开浏览器
+          analyzerMode: process.env.NODE_ENV === 'production' ? disabled : 'server', // 分析使用哪种模式
+          generateStatsFile: false, // 不构建分析文件
+          defaultSizes: 'gzip',
+          analyzerHost: '127.0.0.1', // 分析服务ip
+          analyzerPort: 'auto', // 自动分配端口
+          reportFilename: path.resolve(__dirname, `analyzer/index.html`)
+        })
+      )
+    } else {
+      config.plugins.push(new CompressionWebpackPlugin({
+        filename: '[path][base].gz',
+        algorithm: 'gzip',
+        test: new RegExp('\\.(' + ['js', 'css', 'scss', 'less'].join('|') + ')$'),
+        threshold: 10240, // 大于会10KB被压缩
+        minRatio: 0.8 // 压缩率小于0.8的会被处理
+      }))
+    }
   },
   devServer: {
     // open: true, // 打包时自动打开浏览器
@@ -56,7 +110,7 @@ module.exports = defineConfig({
     // host: '', // 设置本地host 可以设置成 local-ip | local-ipv4 | local-ipv6 | 任意的字符串
     https: false, // 是否启用https
     proxy: {
-      '/api': {
+      '/test': {
         target: 'http://172.23.150.16:8761', // 目标代理接口地址
         secure: false,
         changeOrigin: true, // 开启代理，在本地创建一个虚拟服务端

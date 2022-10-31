@@ -75,7 +75,7 @@ export default {
   overflow-y: scroll;
   box-sizing: border-box;
   transition: all 0.3s ease;
-  background-color: $blue;
+  background-color: transparent;
 }
 .sidebar::-webkit-scrollbar {
   width: 0;
@@ -88,7 +88,7 @@ export default {
 .space_box {
   width: 100%;
   height: 40px;
-  background-color: $blue;
+  background-color: transparent;
 }
 .collapse_btn {
   position: fixed;
