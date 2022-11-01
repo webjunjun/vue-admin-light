@@ -51,7 +51,7 @@ export const routes = [{
   path: '/',
   name: 'Layout',
   component: Layout,
-  meta: { title: '后台', requiresAuth: true }
+  meta: { title: '后台', icon: '', requiresAuth: true }
 }]
 
 const router = new Router({

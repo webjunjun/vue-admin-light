@@ -10,12 +10,12 @@ const asyncRoutes = [{
     path: '/admin/index',
     name: 'AdminIndex',
     component: () => import('@/views/admin/admin.vue'),
-    meta: { title: '后台', requiresAuth: true }
+    meta: { title: '后台', icon: '', requiresAuth: true }
   }, {
     path: '/admin/test',
     name: 'AdminTest',
     component: () => import('@/views/admin/test.vue'),
-    meta: { title: '测试', requiresAuth: true }
+    meta: { title: '测试', icon: '', requiresAuth: true }
   }]
 }]
 

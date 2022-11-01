@@ -15,9 +15,9 @@ const userLogin = ({ commit }, userInfo) => new Promise((resolve, reject) => {
         // 设置router缓存
         if (res.data.routes) {
           localStorage.setItem(defaultSetting.routerKey, JSON.stringify(res.data.routes))
-          // commit('SET_ROUTES', res.data.routes)
-          // 添加路由
+          // 生成路由
           const permissionRouter = generateRoutes(res.data.routes)
+          // 添加路由
           for (let i = 0; i < permissionRouter.length; i++) {
             router.addRoute(permissionRouter[i].name, permissionRouter[i])
           }

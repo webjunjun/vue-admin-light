@@ -104,6 +104,7 @@ export default {
           this.$message({
             message: res.msg,
             type: msgType,
+            duration: msgType === 'success' ? 1000 : 2000,
             onClose: () => {
               if (res.code === 0) {
                 if (this.$route.query.redirect) {
