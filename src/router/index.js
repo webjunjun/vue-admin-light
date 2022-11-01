@@ -55,7 +55,7 @@ export const routes = [{
 }]
 
 const router = new Router({
-  // mode: 'history',// 默认hash模式
+  mode: 'history', // 默认history模式
   routes,
   scrollBehavior: () => ({ y: 0 })
 })

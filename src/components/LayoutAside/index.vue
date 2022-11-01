@@ -15,8 +15,6 @@
         :key="route.path"
         :menu="route"
       ></menu-cell>
-      <!-- 菜单滚动时，最后一个可以看见 -->
-      <li class="space_box"></li>
     </el-menu>
     <div
       class="collapse_btn"
@@ -72,10 +70,10 @@ export default {
   left: 0;
   top: 60px;
   bottom: 0px;
-  overflow-y: scroll;
   box-sizing: border-box;
   transition: all 0.3s ease;
   background-color: transparent;
+  padding-bottom: 40px;
 }
 .sidebar::-webkit-scrollbar {
   width: 0;
@@ -84,11 +82,7 @@ export default {
   height: 100%;
   border-right: none;
   transition: all 0.3s ease;
-}
-.space_box {
-  width: 100%;
-  height: 40px;
-  background-color: transparent;
+  overflow-y: auto;
 }
 .collapse_btn {
   position: fixed;

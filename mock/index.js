@@ -21,8 +21,8 @@ Mock.mock('/api/user/login', function (options) {
         pid: null,
         path: '/admin',
         name: 'Admin',
-        title: '管理员',
-        icon: ''
+        title: '仪表盘',
+        icon: 'dashboard'
       }, {
         id: '01',
         pid: '0',

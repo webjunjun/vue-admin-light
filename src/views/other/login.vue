@@ -20,7 +20,7 @@
           maxlength="30"
           @keyup.enter.native="handleLogin"
         ></el-input>
-        <svg-icon class="control_pwd" :icon-class="isShowPwd ? 'eyeoff' : 'eye'" @click="handleShowPwd" />
+        <svg-icon class="control_pwd" :icon-class="isShowPwd ? 'eye' : 'eyeoff'" @click="handleShowPwd" />
       </el-form-item>
       <el-form-item class="remeber_forget">
         <el-checkbox v-model="form.remember">记住密码</el-checkbox>
