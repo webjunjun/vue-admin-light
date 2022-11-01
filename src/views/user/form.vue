@@ -1,10 +1,10 @@
 <template>
-    <div>鉴权页面，真实项目可删除</div>
+    <div>用户表单页面</div>
 </template>
 
 <script>
 export default {
-  name: 'AdminTest'
+  name: 'UserForm'
 }
 </script>
 

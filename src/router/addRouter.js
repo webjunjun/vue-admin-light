@@ -1,39 +1,23 @@
-// 生成动态路由
-// 后端返回一个不含有children层级的数组，前端自行组成菜单列表
-// 菜单结构
-// {
-//     id: '',// 菜单id，字符串
-//     pid: null,// 菜单父id，是某个父菜单的子菜单，默认null，字符串
-//     path: '',// 菜单路径
-//     name: '',// 菜单name
-//     icon: '',// 菜单icon
-// }
-// { id: '0101', pid: null, path: '', name: '', icon: '' },
-// { id: '0102', pid: '01', path: '', name: '', icon: '' },
-// { id: '0103', pid: '01', path: '', name: '', icon: '' },
-// { id: '010301', pid: '0103', path: '', name: '', icon: '' },
-// { id: '010302', pid: '0103', path: '', name: '', icon: '' },
-// { id: '0201', pid: null, path: '', name: '', icon: '' },
-// { id: '0202', pid: '02', path: '', name: '', icon: '' },
-// import { routes, asyncRoutes } from './index';
 import asyncRoutes from './asyncRoutes'
 import store from '../store/index'
 
 const pathArr = []
 
-function filterAsyncMenus(menus, pid, idx) {
-  const tempMenu = menus
-  const menuList = []
-  for (let arrIdx = idx; arrIdx < tempMenu.length; arrIdx++) {
-    if (tempMenu[arrIdx].pid === pid) {
-      // 生成一个一维的路径数组，权限路由需要
-      pathArr.push(tempMenu[arrIdx].path)
-      // 生成菜单
-      menuList.push(tempMenu[arrIdx])
-      tempMenu[arrIdx].children = filterAsyncMenus(tempMenu, tempMenu[arrIdx].id, arrIdx)
+function filterAsyncMenus(menus, curMenu) {
+  const tempMenus = menus
+  const asideMenu = curMenu
+  for (let i = 0; i < tempMenus.length; i++) {
+    asideMenu.push({
+      path: tempMenus[i].path,
+      title: tempMenus[i].meta.title,
+      icon: tempMenus[i].meta.icon
+    })
+    if (tempMenus[i].children) {
+      asideMenu[i].children = []
+      filterAsyncMenus(tempMenus[i].children, asideMenu[i].children)
     }
   }
-  return menuList
+  return asideMenu
 }
 
 function filterAsyncRoutes(route) {
@@ -64,7 +48,15 @@ export function generateRoutes(authArr) {
 
   // 生成路由
   const accessedRoutes = filterAsyncRoutes(asyncRoutes)
-  // const allRoutes = accessedRoutes.concat(routes)
   // 返回路由
   return accessedRoutes
+}
+
+// 不开启路由权限的路由与菜单的处理
+export function concatTotalRoutes() {
+  // 生成菜单
+  const accessedMenus = filterAsyncMenus(asyncRoutes, [])
+  store.commit('SET_ASIDE_MENU', accessedMenus)
+  // 直接把路由文件返回
+  return asyncRoutes
 }

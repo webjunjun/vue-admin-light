@@ -27,7 +27,7 @@ Mock.mock('/api/user/login', function (options) {
         id: '01',
         pid: '0',
         path: '/admin/index',
-        name: 'AdminIndex',
+        name: 'AdminPage',
         title: '后台',
         icon: ''
       }, {

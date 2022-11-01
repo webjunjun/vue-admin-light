@@ -4,12 +4,8 @@ import NProgress from 'nprogress'
 import defaultSetting from '@/utils/setting'
 import { getToken } from '@/utils/auth'
 
-// 一次性载入的组件
-import Layout from '@/layout/layout.vue'
-import NotFound from '@/views/other/404.vue'
-import Login from '@/views/other/login.vue'
-import Register from '@/views/other/register.vue'
-import { generateRoutes } from './addRouter'
+import constantRoutes from './constantRoutes'
+import { generateRoutes, concatTotalRoutes } from './addRouter'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -29,34 +25,9 @@ Router.prototype.push = function push(location) {
   return originalPush.call(this, location).catch((err) => err)
 }
 
-export const routes = [{
-  path: '*',
-  redirect: '/404'
-}, {
-  path: '/login',
-  name: 'Login',
-  component: Login,
-  meta: { title: '登录', requiresAuth: false }
-}, {
-  path: '/register',
-  name: 'Register',
-  component: Register,
-  meta: { title: '注册', requiresAuth: false }
-}, {
-  path: '/404',
-  name: 'NotFound',
-  component: NotFound,
-  meta: { title: '404', requiresAuth: false }
-}, {
-  path: '/',
-  name: 'Layout',
-  component: Layout,
-  meta: { title: '后台', icon: '', requiresAuth: true }
-}]
-
 const router = new Router({
   mode: 'history', // 默认history模式
-  routes,
+  routes: constantRoutes,
   scrollBehavior: () => ({ y: 0 })
 })
 
@@ -77,7 +48,15 @@ function getUserRoutes() {
     }
   }
 }
-getUserRoutes()
+if (defaultSetting.pagePermission) {
+  getUserRoutes()
+} else {
+  // 不开启页面权限
+  const allRouter = concatTotalRoutes()
+  for (let i = 0; i < allRouter.length; i++) {
+    router.addRoute('Layout', allRouter[i])
+  }
+}
 
 // 禁止登录后访问的页面名单
 const fobidLoginUser = ['Login', 'Register']

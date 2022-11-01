@@ -114,7 +114,7 @@ export default {
                 } else {
                   this.$router
                     .replace({
-                      name: 'AdminIndex'
+                      name: 'AdminPage'
                     })
                     .catch(() => {
                       // 首次登陆会抛异常，需要接受这个

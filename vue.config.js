@@ -110,7 +110,7 @@ module.exports = defineConfig({
     // host: '', // 设置本地host 可以设置成 local-ip | local-ipv4 | local-ipv6 | 任意的字符串
     https: false, // 是否启用https
     proxy: {
-      '/test': {
+      '/apitest': {
         target: 'http://172.23.150.16:8761', // 目标代理接口地址
         secure: false,
         changeOrigin: true, // 开启代理，在本地创建一个虚拟服务端

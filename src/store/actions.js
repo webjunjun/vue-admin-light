@@ -12,14 +12,16 @@ const userLogin = ({ commit }, userInfo) => new Promise((resolve, reject) => {
         // 登录成功
         setToken(res.data.token)
         commit('SET_TOKEN', res.data.token)
-        // 设置router缓存
-        if (res.data.routes) {
-          localStorage.setItem(defaultSetting.routerKey, JSON.stringify(res.data.routes))
-          // 生成路由
-          const permissionRouter = generateRoutes(res.data.routes)
-          // 添加路由
-          for (let i = 0; i < permissionRouter.length; i++) {
-            router.addRoute(permissionRouter[i].name, permissionRouter[i])
+        if (defaultSetting.pagePermission) {
+          // 设置router缓存
+          if (res.data.routes) {
+            localStorage.setItem(defaultSetting.routerKey, JSON.stringify(res.data.routes))
+            // 生成路由
+            const permissionRouter = generateRoutes(res.data.routes)
+            // 添加路由
+            for (let i = 0; i < permissionRouter.length; i++) {
+              router.addRoute(permissionRouter[i].name, permissionRouter[i])
+            }
           }
         }
       }
