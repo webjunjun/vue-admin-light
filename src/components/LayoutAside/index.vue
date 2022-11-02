@@ -29,12 +29,12 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import variables from '@/theme/default.scss'
-import menuCell from './menuCell.vue'
+import MenuCell from './menuCell.vue'
 
 export default {
   name: 'LayoutAside',
   components: {
-    menuCell
+    MenuCell
   },
   data() {
     return {
