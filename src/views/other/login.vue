@@ -114,7 +114,7 @@ export default {
                 } else {
                   this.$router
                     .replace({
-                      name: 'AdminPage'
+                      name: 'DashboardAnalysis'
                     })
                     .catch(() => {
                       // 首次登陆会抛异常，需要接受这个

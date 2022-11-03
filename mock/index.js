@@ -17,26 +17,18 @@ Mock.mock('/api/user/login', function (options) {
     data: {
       token: LoginUsers[0].username,
       routes: [{
-        id: '0',
-        pid: null,
-        path: '/admin',
-        name: 'Admin',
-        title: '仪表盘',
-        icon: 'dashboard'
-      }, {
-        id: '01',
-        pid: '0',
-        path: '/admin/index',
-        name: 'AdminPage',
-        title: '后台',
-        icon: ''
-      }, {
-        id: '02',
-        pid: '0',
-        path: '/admin/test',
-        name: 'AdminTest',
-        title: '测试',
-        icon: ''
+        name: 'AdminIndex',
+        btnList: [],
+        children: [{
+          name: 'AdminPage',
+          btnList: []
+        }, {
+          name: 'AdminTest',
+          btnList: []
+        }, {
+          name: 'AdminList',
+          btnList: []
+        }]
       }]
     }
   }

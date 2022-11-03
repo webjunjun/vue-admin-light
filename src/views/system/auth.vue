@@ -1,10 +1,10 @@
 <template>
-    <div>用户</div>
+  <div>权限管理</div>
 </template>
 
 <script>
 export default {
-  name: 'UserPage'
+  name: 'SystemAuth'
 }
 </script>
 

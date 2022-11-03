@@ -26,7 +26,8 @@ const constantRoutes = [{
   path: '/',
   name: 'Layout',
   component: Layout,
-  meta: { title: '后台', requiresAuth: true }
+  meta: { title: '后台', requiresAuth: true },
+  redirect: '/dashboard/analysis'
 }]
 
 export default constantRoutes

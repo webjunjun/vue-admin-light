@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: 'UserIndex'
+  name: 'AboutIndex'
 }
 </script>

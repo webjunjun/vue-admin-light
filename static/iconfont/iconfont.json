@@ -1,0 +1,51 @@
+{
+  "id": "1388626",
+  "name": "vue-admin-light",
+  "font_family": "wxiconfont",
+  "css_prefix_text": "wxicon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4765746",
+      "name": "warning-circle",
+      "font_class": "warning-circle",
+      "unicode": "e785",
+      "unicode_decimal": 59269
+    },
+    {
+      "icon_id": "4765881",
+      "name": "dashboard",
+      "font_class": "dashboard",
+      "unicode": "e78b",
+      "unicode_decimal": 59275
+    },
+    {
+      "icon_id": "4765891",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e78e",
+      "unicode_decimal": 59278
+    },
+    {
+      "icon_id": "4766293",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e7ae",
+      "unicode_decimal": 59310
+    },
+    {
+      "icon_id": "4767015",
+      "name": "fullscreen",
+      "font_class": "fullscreen",
+      "unicode": "e7ec",
+      "unicode_decimal": 59372
+    },
+    {
+      "icon_id": "4767016",
+      "name": "fullscreen-exit",
+      "font_class": "fullscreen-exit",
+      "unicode": "e7ed",
+      "unicode_decimal": 59373
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 <template>
-    <div>管理页面list</div>
+  <div>路由管理</div>
 </template>
 
 <script>
 export default {
-  name: 'AdminList'
+  name: 'SystemRoute'
 }
 </script>
 

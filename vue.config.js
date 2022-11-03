@@ -59,7 +59,9 @@ module.exports = defineConfig({
       // 设置别名
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, './src')
+          '@': path.resolve(__dirname, './src'),
+          // element-ui 表格组件不渲染的问题 详见: https://github.com/ElemeFE/element/issues/21984
+          vue$: 'vue/dist/vue.esm.js'
         },
         extensions: ['.js', '.vue', '.json']
       }

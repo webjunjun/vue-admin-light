@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: 'AdminIndex'
+  name: 'SystemIndex'
 }
 </script>
