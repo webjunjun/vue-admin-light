@@ -17,16 +17,30 @@ Mock.mock('/api/user/login', function (options) {
     data: {
       token: LoginUsers[0].username,
       routes: [{
-        name: 'AdminIndex',
+        path: '/dashboard',
+        name: 'DashboardIndex',
+        icon: '',
         btnList: [],
         children: [{
-          name: 'AdminPage',
+          path: '/dashboard/analysis',
+          name: 'DashboardAnalysis',
+          icon: '',
           btnList: []
         }, {
-          name: 'AdminTest',
+          path: '/dashboard/workplace',
+          name: 'DashboardWorkplace',
+          icon: '',
           btnList: []
-        }, {
-          name: 'AdminList',
+        }]
+      }, {
+        path: '/system',
+        name: 'SystemIndex',
+        icon: '',
+        btnList: [],
+        children: [{
+          path: '/system/role',
+          name: 'SystemRole',
+          icon: '',
           btnList: []
         }]
       }]
