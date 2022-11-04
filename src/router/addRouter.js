@@ -9,9 +9,11 @@ function filterAsyncMenus(menus, curMenu) {
   for (let i = 0; i < tempMenus.length; i++) {
     asideMenu.push({
       path: tempMenus[i].path,
-      title: tempMenus[i].meta.title,
-      icon: tempMenus[i].meta.icon
+      title: tempMenus[i].title,
+      icon: tempMenus[i].icon
     })
+    // 收集菜单元素为一维数组
+    pathArr.push(tempMenus[i].path)
     if (tempMenus[i].children) {
       asideMenu[i].children = []
       filterAsyncMenus(tempMenus[i].children, asideMenu[i].children)
@@ -36,14 +38,11 @@ function filterAsyncRoutes(route) {
   return routeArr
 }
 
+// 开启路由权限的路由与菜单的处理
 export function generateRoutes(authArr) {
   const routerList = authArr
   // 生成左侧菜单树
-  let accessedMenus = []
-  if (routerList.length > 0) {
-    // 第一次开始取pid，后面取id
-    accessedMenus = filterAsyncMenus(routerList, routerList[0].pid, 0)
-  }
+  const accessedMenus = filterAsyncMenus(routerList, [])
   store.commit('SET_ASIDE_MENU', accessedMenus)
 
   // 生成路由
@@ -52,10 +51,28 @@ export function generateRoutes(authArr) {
   return accessedRoutes
 }
 
+// 不开启路由权限的菜单原始数据处理
+function filterNoAuthMenus(menus, curMenu) {
+  const tempMenus = menus
+  const asideMenu = curMenu
+  for (let i = 0; i < tempMenus.length; i++) {
+    asideMenu.push({
+      path: tempMenus[i].path,
+      title: tempMenus[i].meta.title,
+      icon: tempMenus[i].meta.icon
+    })
+    if (tempMenus[i].children) {
+      asideMenu[i].children = []
+      filterNoAuthMenus(tempMenus[i].children, asideMenu[i].children)
+    }
+  }
+  return asideMenu
+}
+
 // 不开启路由权限的路由与菜单的处理
 export function concatTotalRoutes() {
   // 生成菜单
-  const accessedMenus = filterAsyncMenus(asyncRoutes, [])
+  const accessedMenus = filterNoAuthMenus(asyncRoutes, [])
   store.commit('SET_ASIDE_MENU', accessedMenus)
   // 直接把路由文件返回
   return asyncRoutes

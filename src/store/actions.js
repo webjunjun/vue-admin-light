@@ -20,7 +20,7 @@ const userLogin = ({ commit }, userInfo) => new Promise((resolve, reject) => {
             const permissionRouter = generateRoutes(res.data.routes)
             // 添加路由
             for (let i = 0; i < permissionRouter.length; i++) {
-              router.addRoute(permissionRouter[i].name, permissionRouter[i])
+              router.addRoute('Layout', permissionRouter[i])
             }
           }
         }

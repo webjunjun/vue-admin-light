@@ -44,7 +44,7 @@ function getUserRoutes() {
     const permissionRouter = generateRoutes(pasreRouter)
     // 可以不用把路由写入vuex
     for (let i = 0; i < permissionRouter.length; i++) {
-      router.addRoute(permissionRouter[i].name, permissionRouter[i])
+      router.addRoute('Layout', permissionRouter[i])
     }
   }
 }
@@ -81,7 +81,7 @@ router.beforeEach((to, from, next) => {
         // 路由守卫会一直执行，直到添加路由完成。
         next({ ...to, replace: true })
       } else if (to.path === '/') {
-        next({ path: '/admin/index' })
+        next({ name: 'DashboardAnalysis' })
       } else {
         next()
       }

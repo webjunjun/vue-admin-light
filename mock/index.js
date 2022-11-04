@@ -18,28 +18,28 @@ Mock.mock('/api/user/login', function (options) {
       token: LoginUsers[0].username,
       routes: [{
         path: '/dashboard',
-        name: 'DashboardIndex',
+        title: '仪表盘',
         icon: '',
         btnList: [],
         children: [{
           path: '/dashboard/analysis',
-          name: 'DashboardAnalysis',
+          title: '分析页',
           icon: '',
           btnList: []
         }, {
           path: '/dashboard/workplace',
-          name: 'DashboardWorkplace',
+          title: '工作台',
           icon: '',
           btnList: []
         }]
       }, {
         path: '/system',
-        name: 'SystemIndex',
-        icon: '',
+        title: '系统管理',
+        icon: 'wxiconsetting',
         btnList: [],
         children: [{
           path: '/system/role',
-          name: 'SystemRole',
+          title: '角色管理',
           icon: '',
           btnList: []
         }]
