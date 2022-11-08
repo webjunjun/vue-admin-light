@@ -4,7 +4,7 @@ module.exports = {
     node: true
   },
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/essential', // 识别vue语法 并提供vue默认校验规则
     '@vue/airbnb'
   ],
   parserOptions: {

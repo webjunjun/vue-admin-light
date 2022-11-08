@@ -21,6 +21,8 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
@@ -38,10 +40,18 @@
     "sass": "^1.54.0",
     "sass-loader": "^13.0.2",
     "sass-resources-loader": "^2.2.5",
+    "stylelint": "^14.14.1",
+    "stylelint-config-airbnb": "^0.0.0",
     "svg-sprite-loader": "^6.0.11",
     "vue-template-compiler": "^2.6.14",
     "webpack-bundle-analyzer": "^4.7.0",
     "webpackbar": "^5.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "lint-staged": {
     "src/**/*.{js,vue,jsx,ts,tsx}": "vue-cli-service lint"
