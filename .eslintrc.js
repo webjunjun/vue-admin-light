@@ -41,6 +41,19 @@ module.exports = {
       'beforeStatementContinuationChars': 'never'
     }],
     // 禁止最末尾使用逗号
-    'comma-dangle': ['error', 'never']
+    'comma-dangle': ['error', 'never'],
+    // 不用加后缀的文件类型
+    'import/extensions': ['error', 'always', {
+      js: 'never',
+      jsx: 'never',
+      ts: 'never',
+      tsx: 'never',
+      vue: 'never'
+    }],
+    // 允许短路求值、三元运算
+    'no-unused-expressions': ['error', {
+      'allowShortCircuit': true,
+      'allowTernary': true
+    }]
   }
 }

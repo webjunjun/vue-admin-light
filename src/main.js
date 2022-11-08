@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import axios from 'axios'
 import ElementUI from 'element-ui'
-import App from './App.vue'
+import useComponent from './utils/useComponent'
+import App from './App'
 import router from './router/index'
 import store from './store/index'
 
@@ -13,6 +14,7 @@ import '@/icons' // 引入icons
 require('../mock')
 
 Vue.use(ElementUI)
+Vue.use(useComponent) // 注册自定义全局组件
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 

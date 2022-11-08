@@ -12,6 +12,7 @@ function filterAsyncMenus(menus, curMenu) {
       title: tempMenus[i].title,
       icon: tempMenus[i].icon
     })
+    // 提取按钮
     // 收集菜单元素为一维数组
     pathArr.push(tempMenus[i].path)
     if (tempMenus[i].children) {

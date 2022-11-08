@@ -1,5 +1,5 @@
 // 一次性载入的组件
-import DashboardIndex from '@/views/dashboard/index.vue'
+import DashboardIndex from '@/views/dashboard'
 
 const dashboardRoutes = [{
   path: '/dashboard',
@@ -10,12 +10,12 @@ const dashboardRoutes = [{
   children: [{
     path: '/dashboard/analysis',
     name: 'DashboardAnalysis',
-    component: () => import('@/views/dashboard/analysis.vue'),
+    component: () => import('@/views/dashboard/analysis'),
     meta: { title: '分析页', icon: '', requiresAuth: true }
   }, {
     path: '/dashboard/workplace',
     name: 'DashboardWorkplace',
-    component: () => import('@/views/dashboard/workplace.vue'),
+    component: () => import('@/views/dashboard/workplace'),
     meta: { title: '工作台', icon: '', requiresAuth: true }
   }]
 }]

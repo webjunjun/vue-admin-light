@@ -17,9 +17,9 @@
   </el-container>
 </template>
 <script>
-import LayoutHeader from '@/components/LayoutHeader/index.vue'
-import LayoutAside from '@/components/LayoutAside/index.vue'
-// import LayoutFooter from '@/components/LayoutFooter/index.vue';
+import LayoutHeader from '@/components/LayoutHeader'
+import LayoutAside from '@/components/LayoutAside'
+// import LayoutFooter from '@/components/LayoutFooter'
 import { mapGetters } from 'vuex'
 
 export default {

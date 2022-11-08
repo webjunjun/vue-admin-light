@@ -1,8 +1,8 @@
 // 一次性载入的组件
-import Layout from '@/layout/layout.vue'
-import NotFound from '@/views/other/404.vue'
-import Login from '@/views/other/login.vue'
-import Register from '@/views/other/register.vue'
+import Layout from '@/layout/layout'
+import NotFound from '@/views/other/404'
+import Login from '@/views/other/login'
+import Register from '@/views/other/register'
 
 const constantRoutes = [{
   path: '*',

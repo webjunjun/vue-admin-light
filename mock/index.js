@@ -19,7 +19,7 @@ Mock.mock('/api/user/login', function (options) {
       routes: [{
         path: '/dashboard',
         title: '仪表盘',
-        icon: '',
+        icon: 'wxicondashboard',
         btnList: [],
         children: [{
           path: '/dashboard/analysis',

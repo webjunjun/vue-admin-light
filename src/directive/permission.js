@@ -4,15 +4,15 @@ import store from '@/store/index'
 function checkPermission(el, binding) {
   const { value } = binding
   if (value) {
-    const permissionBtns = store.state.permission.permissionBtns || []
-    const hasPermission = function () {
+    const permissionBtns = store.state.permissionBtns || []
+    const hasPermission = function hasPermission() {
       return permissionBtns.includes(value)
     }
     if (permissionBtns.length > 0 && !hasPermission()) {
-      // el.parentNode && el.parentNode.removeChild(el)
+      el.parentNode && el.parentNode.removeChild(el)
     }
   } else {
-    console.log('need resource id! Like v-permission="\'resource-id\'"')
+    throw new Error('请设置按钮的操作权限')
   }
 }
 

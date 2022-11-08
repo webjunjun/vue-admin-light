@@ -29,7 +29,7 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import variables from '@/theme/default.scss'
-import MenuCell from './menuCell.vue'
+import MenuCell from './menuCell'
 
 export default {
   name: 'LayoutAside',
