@@ -81,6 +81,7 @@ router.beforeEach((to, from, next) => {
         // 路由守卫会一直执行，直到添加路由完成。
         next({ ...to, replace: true })
       } else if (to.path === '/') {
+        // 重定向到分析页
         next({ name: 'DashboardAnalysis' })
       } else {
         next()
