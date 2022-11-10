@@ -28,7 +28,7 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
-import variables from '@/theme/default.scss'
+import variables from '@/theme/default.module.scss'
 import MenuCell from './menuCell'
 
 export default {
@@ -72,7 +72,7 @@ export default {
   bottom: 0px;
   box-sizing: border-box;
   transition: all 0.3s ease;
-  background-color: transparent;
+  background-color: $menuBg;
   padding-bottom: 40px;
 }
 .sidebar::-webkit-scrollbar {

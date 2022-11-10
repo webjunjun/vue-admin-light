@@ -31,7 +31,7 @@ module.exports = defineConfig({
         .loader('sass-resources-loader')
         .options({
           // 要公用的scss的路径
-          resources: './src/theme/default.scss'
+          resources: './src/theme/default.module.scss'
         })
         .end()
     })

@@ -44,7 +44,7 @@
 import { mapMutations } from 'vuex'
 import { removeToken } from '@/utils/auth'
 import defaultSetting from '@/utils/setting'
-import variables from '@/theme/default.scss'
+import variables from '@/theme/default.module.scss'
 
 export default {
   name: 'LayoutHeader',
