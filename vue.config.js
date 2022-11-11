@@ -5,7 +5,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin') // 打包
 const WebpackBar = require('webpackbar') // 显示打包进度条
 
 const port = process.env.PORT || 8080
-const fixRequestBody = function (proxyReq, req, res) {
+const fixRequestBody = function fixRequestBody(proxyReq, req, res) {
   // 重写代理的请求头信息
   console.log(proxyReq, req, res)
 }
@@ -48,7 +48,7 @@ module.exports = defineConfig({
       .use('svg-sprite-loader')
       .loader('svg-sprite-loader')
       .options({
-        symbolId: 'icon-[name]',
+        symbolId: 'icon-[name]'
       })
       .end()
   },
@@ -80,24 +80,24 @@ module.exports = defineConfig({
       })
     ]
     config.plugins.push(...allPlugins)
-    if(process.env.NODE_ENV !== 'production'){
+    if (process.env.NODE_ENV !== 'production') {
       // 非生产环境打开依赖分析
       config.plugins.push(
         new BundleAnalyzerPlugin({
-          openAnalyzer: process.env.NODE_ENV === 'production' ? false : true, // 是否打开浏览器
-          analyzerMode: process.env.NODE_ENV === 'production' ? disabled : 'server', // 分析使用哪种模式
+          openAnalyzer: process.env.NODE_ENV !== 'production', // 是否打开浏览器
+          analyzerMode: process.env.NODE_ENV === 'production' ? 'disabled' : 'server', // 分析使用哪种模式
           generateStatsFile: false, // 不构建分析文件
           defaultSizes: 'gzip',
           analyzerHost: '127.0.0.1', // 分析服务ip
           analyzerPort: 'auto', // 自动分配端口
-          reportFilename: path.resolve(__dirname, `analyzer/index.html`)
+          reportFilename: path.resolve(__dirname, 'analyzer/index.html')
         })
       )
     } else {
       config.plugins.push(new CompressionWebpackPlugin({
         filename: '[path][base].gz',
         algorithm: 'gzip',
-        test: new RegExp('\\.(' + ['js', 'css', 'scss', 'less'].join('|') + ')$'),
+        test: new RegExp(`\\.(${['js', 'css', 'scss', 'less'].join('|')})$`),
         threshold: 10240, // 大于会10KB被压缩
         minRatio: 0.8 // 压缩率小于0.8的会被处理
       }))

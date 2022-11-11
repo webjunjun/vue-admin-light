@@ -1,12 +1,12 @@
 /**
- * 
+ *
  * 规范commit日志
  * https://commitlint.js.org
  * <type>(<scope>): <subject>
  * type: 代码类型 必选
  * scope: 修改的文件范围 可选
  * subject: 本次提交的描述 必选
- * 
+ *
  */
 const types = [
   'build', // 主要目的是修改项目构建系统（例如glup，webpack，rollup的配置等）的提交
@@ -26,9 +26,7 @@ const typeEnum = {
   rules: {
     'type-enum': [2, 'always', types]
   },
-  value: () => {
-    return types
-  }
+  value: () => types
 }
 
 const Configuration = {
