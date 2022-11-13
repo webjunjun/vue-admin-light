@@ -5,9 +5,9 @@
       :default-active="onRoutes"
       :router="true"
       class="el-menu-vertical"
-      :background-color="themeVariable.menuBg"
-      :text-color="themeVariable.menuText"
-      :active-text-color="themeVariable.menuActiveText"
+      :background-color="themeVariable.menubg"
+      :text-color="themeVariable.menutext"
+      :active-text-color="themeVariable.menuactivetext"
       :collapse="isCollapse"
     >
       <menu-cell
@@ -44,6 +44,7 @@ export default {
   computed: {
     ...mapGetters(['asideMenu', 'leftWidth']),
     themeVariable() {
+      console.log(variables)
       return variables
     },
     onRoutes() {

@@ -1,6 +1,6 @@
 <template>
-  <div class="login_page">
-    <el-form class="login_form" ref="form" :model="form" :rules="rules">
+  <div class="login-page">
+    <el-form class="login-form" ref="form" :model="form" :rules="rules">
       <div class="title-container">{{ defaultSetting.title }}</div>
       <el-form-item class="login-input" prop="name">
         <svg-icon class="iconfont" icon-class="user" />
@@ -140,7 +140,7 @@ export default {
 <style lang="scss">
 $loginWhite: #fff;
 
-login-page {
+.login-page {
   display: flex;
   justify-content: center;
   align-items: center;
