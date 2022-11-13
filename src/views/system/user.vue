@@ -1,5 +1,7 @@
 <template>
-  <div>用户管理</div>
+  <div class="main-page">
+    <page-title />
+  </div>
 </template>
 
 <script>

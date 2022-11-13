@@ -11,8 +11,8 @@ const state = {
   token: null,
   userInfo: null,
   asideMenu: [],
-  routes: null,
-  leftWidth: '200px'
+  leftWidth: '200px',
+  permissionBtns: []
 }
 
 // 创建 store 实例

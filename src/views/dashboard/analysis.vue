@@ -1,5 +1,7 @@
 <template>
-  <div>分析页</div>
+  <div class="main-page">
+    <page-title />
+  </div>
 </template>
 
 <script>

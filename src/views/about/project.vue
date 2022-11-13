@@ -1,5 +1,7 @@
 <template>
-  <div>关于项目</div>
+  <div class="main-page">
+    <page-title />
+  </div>
 </template>
 
 <script>

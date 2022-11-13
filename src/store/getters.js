@@ -4,14 +4,14 @@ const userInfo = (state) => state.userInfo
 
 const asideMenu = (state) => state.asideMenu
 
-const routes = (state) => state.routes
-
 const leftWidth = (state) => state.leftWidth
+
+const permissionBtns = (state) => state.permissionBtns
 
 module.exports = {
   token,
   userInfo,
   asideMenu,
-  routes,
-  leftWidth
+  leftWidth,
+  permissionBtns
 }

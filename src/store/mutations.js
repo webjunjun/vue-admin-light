@@ -9,10 +9,10 @@ module.exports = {
   SET_ASIDE_MENU: (state, asideMenu) => {
     state.asideMenu = asideMenu
   },
-  SET_ROUTES: (state, routes) => {
-    state.routes = routes
-  },
   SET_LEFTWIDTH: (state, leftWidth) => {
     state.leftWidth = leftWidth
+  },
+  SET_PERMISSION: (state, permissionBtns) => {
+    state.permissionBtns = permissionBtns
   }
 }
