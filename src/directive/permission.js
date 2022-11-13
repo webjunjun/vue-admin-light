@@ -8,8 +8,10 @@ function checkPermission(el, binding) {
     const hasPermission = function hasPermission() {
       return permissionBtns.includes(value)
     }
-    if (permissionBtns.length > 0 && !hasPermission()) {
-      el.parentNode && el.parentNode.removeChild(el)
+    if (store.state.btnAuthOn) {
+      if (permissionBtns.length > 0 && !hasPermission()) {
+        el.parentNode && el.parentNode.removeChild(el)
+      }
     }
   } else {
     throw new Error('请设置按钮的操作权限')

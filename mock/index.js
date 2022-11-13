@@ -41,7 +41,7 @@ Mock.mock('/api/user/login', function (options) {
           path: '/system/role',
           title: '角色管理',
           icon: '',
-          btnList: []
+          btnList: ['SystemRole-Add', 'SystemRole-Edit']
         }]
       }]
     }

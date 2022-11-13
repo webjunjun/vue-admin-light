@@ -44,7 +44,6 @@ export default {
   computed: {
     ...mapGetters(['asideMenu', 'leftWidth']),
     themeVariable() {
-      console.log(variables)
       return variables
     },
     onRoutes() {

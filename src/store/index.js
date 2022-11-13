@@ -12,7 +12,8 @@ const state = {
   userInfo: null,
   asideMenu: [],
   leftWidth: '200px',
-  permissionBtns: []
+  permissionBtns: [],
+  btnAuthOn: false // 默认开启
 }
 
 // 创建 store 实例

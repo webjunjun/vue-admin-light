@@ -2,6 +2,7 @@ import asyncRoutes from './asyncRoutes'
 import store from '../store/index'
 
 const pathArr = []
+const btnArr = []
 
 function filterAsyncMenus(menus, curMenu) {
   const tempMenus = menus
@@ -13,6 +14,9 @@ function filterAsyncMenus(menus, curMenu) {
       icon: tempMenus[i].icon
     })
     // 提取按钮
+    if (tempMenus[i].btnList && tempMenus[i].btnList.length > 0) {
+      btnArr.push(...tempMenus[i].btnList)
+    }
     // 收集菜单元素为一维数组
     pathArr.push(tempMenus[i].path)
     if (tempMenus[i].children) {
@@ -45,6 +49,8 @@ export function generateRoutes(authArr) {
   // 生成左侧菜单树
   const accessedMenus = filterAsyncMenus(routerList, [])
   store.commit('SET_ASIDE_MENU', accessedMenus)
+  // 生成权限按钮
+  store.commit('SET_PERMISSION', btnArr)
 
   // 生成路由
   const accessedRoutes = filterAsyncRoutes(asyncRoutes)

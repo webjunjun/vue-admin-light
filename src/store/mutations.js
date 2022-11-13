@@ -14,5 +14,8 @@ module.exports = {
   },
   SET_PERMISSION: (state, permissionBtns) => {
     state.permissionBtns = permissionBtns
+  },
+  SET_BTNAUTH: (state, btnAuthOn) => {
+    state.btnAuthOn = btnAuthOn
   }
 }

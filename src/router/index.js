@@ -58,6 +58,11 @@ if (defaultSetting.pagePermission) {
   }
 }
 
+if (defaultSetting.btnPermissionBoolean) {
+  // 开启按钮权限
+  store.commit('SET_BTNAUTH', true)
+}
+
 // 禁止登录后访问的页面名单
 const fobidLoginUser = ['Login', 'Register']
 

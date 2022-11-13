@@ -5,5 +5,5 @@ module.exports = {
   TokenKey: 'Admin-Token', // token在cookie里的key名
   routerKey: 'Admin-Router', // localstorage 存储路由对象的key名
   pagePermission: true, // 是否开启页面权限
-  btnPermissionBoolean: false // 是否开启按钮权限
+  btnPermissionBoolean: true // 是否开启按钮权限 必须开启页面权限生效
 }
