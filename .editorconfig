@@ -5,7 +5,7 @@ root = true
 # 缩进风格 可选space | tab
 indent_style = space
 # 缩进的空格数
-indent_size = 4
+indent_size = 2
 # 结尾换行符，可选lf | cr | crlf
 end_of_line = lf
 # 设为true表示删除一行中的前后空格
