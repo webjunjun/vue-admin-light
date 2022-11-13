@@ -4,7 +4,7 @@
     <el-container>
       <LayoutAside></LayoutAside>
       <el-container
-        class="main_container_wrap"
+        class="main-container-wrap"
         direction="vertical"
         :style="'width: calc(100% - ' + leftWidth + ');left: ' + leftWidth"
       >

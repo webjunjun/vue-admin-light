@@ -28,7 +28,7 @@
       >
         <span class="el-dropdown-link">
           <span class="el-icon-user-solid"></span>
-          <span class="user_name">{{ name }}</span>
+          <span class="user-name">{{ name }}</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">

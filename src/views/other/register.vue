@@ -71,14 +71,14 @@
       </el-form-item>
       <el-form-item>
         <el-button
-          class="register_btn"
+          class="register-btn"
           type="primary"
           size="small"
           :loading="loading"
           @click="handleRegister"
           >注册</el-button
         >
-        <el-button class="cancel_btn" size="small" @click="handleCancel"
+        <el-button class="cancel-btn" size="small" @click="handleCancel"
           >取消</el-button
         >
       </el-form-item>
