@@ -27,7 +27,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.el-submenu__title > i, .menuitem > i, .el-menu-item i {
+.el-submenu__title > i,
+.menuitem > i,
+.el-menu-item i {
   margin-right: 6px;
   vertical-align: -1px;
 }

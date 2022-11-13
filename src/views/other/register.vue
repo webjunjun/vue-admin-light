@@ -1,7 +1,7 @@
 <template>
-  <div class="register_page">
+  <div class="register-page">
     <el-form
-      class="register_form"
+      class="register-form"
       ref="form"
       :model="form"
       :rules="rules"
@@ -217,38 +217,45 @@ export default {
 
 <style lang="scss">
 $loginWhite: #fff;
-.register_page {
+
+.register-page {
   width: 100%;
   min-height: 100%;
+  padding: 80px 0;
   background-color: $blue;
   box-sizing: border-box;
-  padding: 80px 0px;
+
   .title-container {
-    font-size: 24px;
-    color: #fff;
-    font-weight: 600;
-    text-align: left;
     margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    text-align: left;
+
     span {
       font-size: 14px;
     }
   }
-  .register_form {
+
+  .register-form {
     max-width: 500px;
+    padding: 30px;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 30px;
+
     .el-input {
       max-width: 300px;
+
       .el-input__inner {
         width: 100%;
-        background: rgba(0, 0, 0, 0.1);
-        border: 0px;
-        border-radius: 0px;
         color: $loginWhite;
-        -webkit-appearance: none;
+        background: rgb(0 0 0 / 10%);
+        border: 0;
+        border-radius: 0;
+        appearance: none;
       }
     }
+
     .el-form-item__label {
       color: $loginWhite;
     }

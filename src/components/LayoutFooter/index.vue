@@ -9,10 +9,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.el-footer{
-  background-color: #011116;
+.el-footer {
+  line-height: 60px;
   color: #fff;
   text-align: center;
-  line-height: 60px;
+  background-color: #011116;
 }
 </style>

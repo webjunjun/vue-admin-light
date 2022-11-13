@@ -18,11 +18,11 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('../static/style/reset.css');
-@import url('../static/iconfont/iconfont.css');
+@import url("../static/style/reset.css");
+@import url("../static/iconfont/iconfont.css");
 
 #nprogress .bar {
- background: #66B1FF!important;
- height: 4px!important;
+  height: 4px !important;
+  background: #66b1ff !important;
 }
 </style>

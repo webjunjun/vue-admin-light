@@ -1,20 +1,20 @@
 <template>
-  <el-header class="layout_header">
-    <div class="header_left">
-      <div class="logo_website" :title="defaultSetting.title">
+  <el-header class="layout-header">
+    <div class="header-left">
+      <div class="logo-website" :title="defaultSetting.title">
         <!-- logo -->
-        <!-- <div class="website_logo">
+        <!-- <div class="website-logo">
           <img src="/static/logo/logo.png" :alt="defaultSetting.title">
         </div> -->
         <!-- 网站名字 -->
-        <div class="website_name">
+        <div class="website-name">
           <p>{{ defaultSetting.title }}</p>
         </div>
       </div>
     </div>
-    <div class="header_right">
+    <div class="header-right">
       <!-- 登录注册 -->
-      <div v-if="!isLogin" class="login_register_wrap">
+      <div v-if="!isLogin" class="login-register-wrap">
         <span class="el-icon-user-solid"></span>
         <router-link to="/login">登录</router-link>
         <span>/</span>
@@ -22,7 +22,7 @@
       </div>
       <el-dropdown
         v-else
-        class="user_drop_box"
+        class="user-drop-box"
         trigger="click"
         @command="handleCommand"
       >
@@ -105,60 +105,70 @@ export default {
 </script>
 
 <style lang="scss">
-.layout_header {
+.layout-header {
+  display: flex;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 60px;
   color: #fff;
   background-color: $headBg;
-  line-height: 60px;
-  padding: 0px;
-  width: 100%;
-  display: flex;
   box-sizing: border-box;
-  padding: 0 15px;
   justify-content: space-between;
-  .header_left,
-  .header_right {
+
+  .header-left,
+  .header-right {
     display: flex;
   }
-  .logo_website {
+
+  .logo-website {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
-  .website_logo {
+
+  .website-logo {
     width: 100%;
     max-width: 150px;
+
     img {
-      width: 100%;
       display: inherit;
+      width: 100%;
     }
   }
-  .website_name {
+
+  .website-name {
+    margin-top: 8px;
     font-size: 18px;
     font-weight: 600;
     text-align: left;
     text-indent: 8px;
-    margin-top: 8px;
+
     p {
-      margin: 0px;
+      margin: 0;
     }
   }
-  .user_drop_box {
+
+  .user-drop-box {
     color: $menuText;
-    user-select: none;
     cursor: pointer;
+    user-select: none;
+
     .el-icon-user-solid {
       font-size: 20px;
       vertical-align: -2px;
     }
   }
-  .login_register_wrap {
+
+  .login-register-wrap {
     font-size: 14px;
     color: $menuText;
     cursor: pointer;
+
     .el-icon-user-solid {
       font-size: 20px;
       vertical-align: -2px;
     }
+
     a {
       color: $menuText;
       text-decoration: none;

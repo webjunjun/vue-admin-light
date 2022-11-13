@@ -17,7 +17,7 @@
       ></menu-cell>
     </el-menu>
     <div
-      class="collapse_btn"
+      class="collapse-btn"
       :style="'width:' + leftWidth"
       @click="handleCollapse"
     >
@@ -67,32 +67,36 @@ export default {
 <style lang="scss" scoped>
 .sidebar {
   position: absolute;
-  left: 0;
   top: 60px;
-  bottom: 0px;
-  box-sizing: border-box;
-  transition: all 0.3s ease;
-  background-color: $menuBg;
+  bottom: 0;
+  left: 0;
   padding-bottom: 40px;
+  background-color: $menuBg;
+  box-sizing: border-box;
+  transition: all .3s ease;
 }
+
 .sidebar::-webkit-scrollbar {
   width: 0;
 }
+
 .sidebar > ul {
   height: 100%;
-  border-right: none;
-  transition: all 0.3s ease;
   overflow-y: auto;
+  border-right: none;
+  transition: all .3s ease;
 }
-.collapse_btn {
+
+.collapse-btn {
   position: fixed;
-  left: 0px;
-  bottom: 0px;
+  bottom: 0;
+  left: 0;
   height: 40px;
-  background-color: $light-blue;
   text-align: center;
-  transition: all 0.3s ease;
   cursor: pointer;
+  background-color: $light-blue;
+  transition: all .3s ease;
+
   i {
     font-size: 24px;
     line-height: 40px;

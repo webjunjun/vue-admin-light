@@ -7,7 +7,3 @@ export default {
   name: 'SystemRole'
 }
 </script>
-
-<style lang="scss" scoped>
-//
-</style>

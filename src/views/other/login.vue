@@ -2,7 +2,7 @@
   <div class="login_page">
     <el-form class="login_form" ref="form" :model="form" :rules="rules">
       <div class="title-container">{{ defaultSetting.title }}</div>
-      <el-form-item class="login_input" prop="name">
+      <el-form-item class="login-input" prop="name">
         <svg-icon class="iconfont" icon-class="user" />
         <el-input
           placeholder="请输入用户名"
@@ -11,7 +11,7 @@
           @keyup.enter.native="handleLogin"
         ></el-input>
       </el-form-item>
-      <el-form-item class="login_input remeber_forget" prop="passwd">
+      <el-form-item class="login-input remeber-forget" prop="passwd">
         <svg-icon class="iconfont" icon-class="lock" />
         <el-input
           placeholder="请输入密码"
@@ -20,15 +20,15 @@
           maxlength="30"
           @keyup.enter.native="handleLogin"
         ></el-input>
-        <svg-icon class="control_pwd" :icon-class="isShowPwd ? 'eye' : 'eyeoff'" @click="handleShowPwd" />
+        <svg-icon class="control-pwd" :icon-class="isShowPwd ? 'eye' : 'eyeoff'" @click="handleShowPwd" />
       </el-form-item>
-      <el-form-item class="remeber_forget">
+      <el-form-item class="remeber-forget">
         <el-checkbox v-model="form.remember">记住密码</el-checkbox>
-        <router-link class="forget_pwd" to="/login">忘记密码</router-link>
+        <router-link class="forget-pwd" to="/login">忘记密码</router-link>
       </el-form-item>
       <el-form-item>
         <el-button
-          class="login_btn"
+          class="login-btn"
           type="primary"
           @click="handleLogin"
           :loading="loading"
@@ -139,64 +139,76 @@ export default {
 
 <style lang="scss">
 $loginWhite: #fff;
-.login_page {
-  width: 100%;
-  min-height: 100%;
+
+login-page {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  min-height: 100%;
   background-color: $blue;
+
   .title-container {
-    font-size: 24px;
-    color: $loginWhite;
-    font-weight: 600;
-    text-align: center;
     margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    color: $loginWhite;
+    text-align: center;
   }
+
   .el-input {
     width: 300px;
     height: 47px;
+
     .el-input__inner {
       width: 100%;
-      background: transparent;
-      border: 0px;
-      border-radius: 0px;
+      height: 47px;
       padding: 12px 5px 12px 15px;
       color: $loginWhite;
-      height: 47px;
-      -webkit-appearance: none;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      appearance: none;
     }
   }
-  .login_input {
-    box-sizing: border-box;
+
+  .login-input {
     padding-left: 12px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+
     .iconfont {
       color: $light-blue;
     }
   }
-  .remeber_forget {
+
+  .remeber-forget {
     margin-bottom: 10px;
+
     .el-checkbox__label {
       color: $loginWhite;
     }
   }
-  .forget_pwd {
+
+  .forget-pwd {
     float: right;
     color: $loginWhite;
     text-decoration: none;
+
     &:hover {
       color: $light-blue;
     }
   }
-  .control_pwd {
+
+  .control-pwd {
     display: inline-block;
     height: 47px;
-    cursor: pointer;
     padding-right: 12px;
     color: $light-blue;
+    cursor: pointer;
   }
-  .login_btn {
+
+  .login-btn {
     width: 100%;
   }
 }

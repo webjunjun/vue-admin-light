@@ -40,19 +40,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main_container_wrap {
+.main-container-wrap {
   position: absolute;
   top: 60px;
-  bottom: 0px;
+  bottom: 0;
   overflow-y: scroll;
-  transition: all 0.3s ease;
+  transition: all .3s ease;
+
   .el-main {
     width: 100%;
     height: 100%;
     padding: 10px;
-    box-sizing: border-box;
-    background-color: $mainBg;
     overflow-y: scroll;
+    background-color: $mainBg;
+    box-sizing: border-box;
   }
 }
 </style>

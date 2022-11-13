@@ -5,3 +5,9 @@
 *.eot
 *.ttf
 *.woff
+
+/public/
+node_modules
+/dist/
+/static/iconfont/
+*.module.scss
