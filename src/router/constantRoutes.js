@@ -3,6 +3,7 @@ import Layout from '@/layout/layout'
 import NotFound from '@/views/other/404'
 import Login from '@/views/other/login'
 import Register from '@/views/other/register'
+import AccountMine from '@/views/account/mine'
 
 const constantRoutes = [{
   path: '*',
@@ -26,7 +27,13 @@ const constantRoutes = [{
   path: '/',
   name: 'Layout',
   component: Layout,
-  meta: { title: '后台', requiresAuth: true }
+  meta: { title: '后台', requiresAuth: true },
+  children: [{
+    path: '/mine',
+    name: 'AccountMine',
+    component: AccountMine,
+    meta: { title: '个人中心', requiresAuth: true }
+  }]
 }]
 
 export default constantRoutes
