@@ -24,25 +24,25 @@ module.exports = {
       'at-rules'
     ],
     // 其他规则
-    'no-empty-source': null,
-    'property-no-vendor-prefix': [true, { ignoreProperties: ['background-clip'] }],
+    'no-empty-source': true, // 禁止空源码
+    'property-no-vendor-prefix': [true, { ignoreProperties: ['background-clip'] }], // 禁止属性的浏览器引擎前缀 忽略background-clip
     'number-leading-zero': 'never', // 对于小于1的小数，要求或不允许前导零
     'number-no-trailing-zeros': true, // 不允许数字中的尾随零
     'length-zero-no-unit': true, // 不允许使用零长度的单位
-    'value-list-comma-space-after': 'always',
+    'value-list-comma-space-after': 'always', // 在逗号之后必须有一个空格
     'declaration-colon-space-after': 'always', // 声明的冒号后需要一个空格
-    'value-list-max-empty-lines': 0,
-    'shorthand-property-no-redundant-values': true,
-    'declaration-block-no-duplicate-properties': true,
-    'declaration-block-no-redundant-longhand-properties': true,
-    'declaration-block-semicolon-newline-after': 'always',
-    'block-closing-brace-newline-after': 'always',
-    'media-feature-colon-space-after': 'always',
-    'media-feature-range-operator-space-after': 'always',
-    'at-rule-name-space-after': 'always',
-    indentation: 2,
-    'no-eol-whitespace': true,
-    'string-no-newline': null,
+    'value-list-max-empty-lines': 0, // 允许的最大相邻空行数量为0 属性间不允许存在空行
+    'shorthand-property-no-redundant-values': true, // 禁止简写属性的冗余值
+    'declaration-block-no-duplicate-properties': true, // 禁止声明块的重复属性
+    'declaration-block-no-redundant-longhand-properties': true, // 禁止可合并为一个简写属性的扩写属性
+    'declaration-block-semicolon-newline-after': 'always', // 要求在声明块的分号之后必须有换行符或不能有空白符
+    'block-closing-brace-newline-after': 'always', // 要求在块的闭大括号之后必须有换行符或不能有空白符
+    'media-feature-colon-space-after': 'always', // 要求在媒体功能的冒号之后必须有一个空格或不能有空白符
+    'media-feature-range-operator-space-after': 'always', // 要求在媒体功能的范围运算符之后必须有一个空格或不能有空白符
+    'at-rule-name-space-after': 'always', // 要求在@规则名之后必须有一个空格
+    indentation: 2, // 指定2个空格缩进
+    'no-eol-whitespace': true, // 禁止行尾空白符
+    'string-no-newline': null, // 禁止字符串中的(未转义)换行符
     'selector-class-pattern': '^([a-z][a-z0-9]*)(-[a-z0-9]+)|(__[a-z0-9]+)*$', // 类选择器指定匹配模式
     // 其他样式的顺序
     'order/properties-order': [
