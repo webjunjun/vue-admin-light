@@ -13,7 +13,7 @@ const state = {
   asideMenu: [],
   leftWidth: '200px',
   permissionBtns: [],
-  btnAuthOn: false // 默认开启
+  btnAuthOn: false // 权限按钮开关 受btnPermissionBoolean控制
 }
 
 // 创建 store 实例
