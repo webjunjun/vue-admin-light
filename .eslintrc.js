@@ -54,6 +54,7 @@ module.exports = {
     'no-unused-expressions': ['error', {
       allowShortCircuit: true,
       allowTernary: true
-    }]
+    }],
+    'no-restricted-syntax': 'off'
   }
 }

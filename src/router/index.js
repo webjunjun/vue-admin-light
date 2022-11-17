@@ -71,6 +71,13 @@ let firstOrRefresh = true
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
+  if (window.pendingMap && window.pendingMap.size !== 0) {
+    // 进入路由前取消上一个路由的所有请求
+    const allPendingMap = window.pendingMap
+    for (const value of allPendingMap) {
+      value.abort()
+    }
+  }
   // 从vuex中获取token
   const hasToken = store.getters.token
   // 配置页面标题
