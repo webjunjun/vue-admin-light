@@ -12,6 +12,12 @@ const userLogin = ({ commit }, userInfo) => new Promise((resolve, reject) => {
         // 登录成功
         setToken(res.data.token)
         commit('SET_TOKEN', res.data.token)
+        // 个人用户信息保存
+        const userData = {
+          userName: res.data.userName
+        }
+        localStorage.setItem('userInfo', JSON.stringify(userData))
+        commit('SET_USERINFO', userData)
         if (defaultSetting.pagePermission) {
           // 设置router缓存
           if (res.data.routes) {

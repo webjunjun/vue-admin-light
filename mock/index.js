@@ -15,6 +15,7 @@ Mock.mock('/api/user/login', function (options) {
     code: 0,
     msg: '登录成功',
     data: {
+      userName: LoginUsers[0].name,
       token: LoginUsers[0].username,
       routes: [{
         path: '/dashboard',

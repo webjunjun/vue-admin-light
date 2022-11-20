@@ -34,6 +34,9 @@ const router = new Router({
 // 刷新页面时，cookie中获取token
 if (getToken()) {
   store.commit('SET_TOKEN', getToken())
+  // 获取localStorage里的个人信息
+  const userInfo = localStorage.getItem('userInfo')
+  store.commit('SET_USERINFO', JSON.parse(userInfo))
 }
 
 // 刷新页面时，localstorage中获取路由

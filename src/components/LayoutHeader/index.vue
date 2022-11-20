@@ -86,6 +86,8 @@ export default {
           removeToken()
           this.SET_TOKEN(null)
           localStorage.removeItem(defaultSetting.routerKey)
+          localStorage.removeItem('userInfo')
+          this.SET_USERINFO(null)
           // 直接刷新页面，清理动态路由
           location.href = '/login'
         }
