@@ -125,6 +125,16 @@ html, body, #app {
   height: 100%;
 }
 
+/* 面包屑样式 */
+.custom-breadcrumb {
+  margin: 10px 0 20px 0;
+}
+
+.custom-breadcrumb .el-breadcrumb__inner a,
+.custom-breadcrumb .el-breadcrumb__inner.is-link {
+  color: #606266;
+}
+
 /* 页面切换进度条 */
 #nprogress .bar {
   height: 4px !important;

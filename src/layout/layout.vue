@@ -2,13 +2,15 @@
   <el-container direction="vertical">
     <layout-header />
     <el-container>
-      <LayoutAside></LayoutAside>
+      <layout-aside />
       <el-container
         class="main-container-wrap"
         direction="vertical"
         :style="'width: calc(100% - ' + leftWidth + ');left: ' + leftWidth"
       >
         <el-main>
+          <!-- 面包屑导航打开注释即可 -->
+          <bread-crumb />
           <router-view />
         </el-main>
         <!-- <layout-footer /> -->
@@ -19,6 +21,7 @@
 <script>
 import LayoutHeader from '@/components/LayoutHeader'
 import LayoutAside from '@/components/LayoutAside'
+import BreadCrumb from '@/components/BreadCrumb'
 // import LayoutFooter from '@/components/LayoutFooter'
 import { mapGetters } from 'vuex'
 
@@ -26,8 +29,9 @@ export default {
   name: 'Layout',
   components: {
     LayoutHeader,
+    BreadCrumb,
+    // LayoutFooter,
     LayoutAside
-    // LayoutFooter
   },
   data() {
     return {}
