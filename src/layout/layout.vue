@@ -8,10 +8,26 @@
         direction="vertical"
         :style="'width: calc(100% - ' + leftWidth + ');left: ' + leftWidth"
       >
+        <!-- 标签页 -->
+        <tags-view
+          v-if="defaultSetting.multipleTabs"
+          ref="aliveTab"
+          :keep-alive-component-instance="keepAliveComponentInstance"
+        />
         <el-main>
-          <!-- 面包屑导航打开注释即可 -->
-          <bread-crumb />
-          <router-view />
+          <template v-if="defaultSetting.multipleTabs">
+            <bread-crumb />
+            <div ref="keepAliveContainer">
+              <keep-alive>
+                <router-view v-if="$route.meta.keepAlive" :key="$route.fullPath" />
+              </keep-alive>
+              <router-view v-if="!$route.meta.keepAlive" />
+            </div>
+          </template>
+          <template v-else>
+            <bread-crumb />
+            <router-view />
+          </template>
         </el-main>
         <!-- <layout-footer /> -->
       </el-container>
@@ -23,6 +39,8 @@ import LayoutHeader from '@/components/LayoutHeader'
 import LayoutAside from '@/components/LayoutAside'
 import BreadCrumb from '@/components/BreadCrumb'
 // import LayoutFooter from '@/components/LayoutFooter'
+import TagsView from '@/components/TagsView'
+import defaultSetting from '@/utils/setting'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -31,15 +49,26 @@ export default {
     LayoutHeader,
     BreadCrumb,
     // LayoutFooter,
+    TagsView,
     LayoutAside
   },
   data() {
-    return {}
+    return {
+      keepAliveComponentInstance: null
+    }
   },
   computed: {
-    ...mapGetters(['leftWidth'])
+    ...mapGetters(['leftWidth']),
+    defaultSetting() {
+      return defaultSetting
+    }
   },
-  created() {}
+  mounted() {
+    if (this.$refs.keepAliveContainer) {
+      // 获取keep-alive的控件实例对象
+      this.keepAliveComponentInstance = this.$refs.keepAliveContainer.childNodes[0].__vue__
+    }
+  }
 }
 </script>
 

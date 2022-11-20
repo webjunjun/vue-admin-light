@@ -24,6 +24,7 @@ module.exports = {
       'at-rules'
     ],
     // 其他规则
+    'no-descending-specificity': null, // 关闭禁止特异性较低的选择器在特异性较高的选择器之后重写
     'no-empty-source': true, // 禁止空源码
     'property-no-vendor-prefix': [true, { ignoreProperties: ['background-clip'] }], // 禁止属性的浏览器引擎前缀 忽略background-clip
     'number-leading-zero': 'never', // 对于小于1的小数，要求或不允许前导零

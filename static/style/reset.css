@@ -127,7 +127,7 @@ html, body, #app {
 
 /* 面包屑样式 */
 .custom-breadcrumb {
-  margin: 10px 0 20px 0;
+  margin: 10px 0 20px;
 }
 
 .custom-breadcrumb .el-breadcrumb__inner a,
