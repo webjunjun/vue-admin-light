@@ -1,32 +1,51 @@
 /* 我的重置 */
 html {
-  font-family: -apple-system, BlinkMacSystemFont,  "Microsoft YaHei", "Helvetica Neue";
+  font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif, "Helvetica Neue";
   font-size: 16px;
-  color: #333;
   line-height: 1.75;
+  color: #333;
   background-color: #f9f9f9;
-  scroll-behavior: smooth;
+
   /* 禁止选中文字 */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  scroll-behavior: smooth;
 }
 
-body, p, h1, h2, h3, ul, ol, dl, dd, figure, menu {
+body,
+p,
+h1,
+h2,
+h3,
+ul,
+ol,
+dl,
+dd,
+figure,
+menu {
   margin: 0;
 }
 
-ul, ol, input, textarea, figure, menu {
+ul,
+ol,
+input,
+textarea,
+figure,
+menu {
   padding: 0;
 }
 
-main, details {
+main,
+details {
   display: block;
 }
 
 /* 统一标题的表现形式 */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-size: 100%;
   font-weight: 400;
 }
@@ -43,12 +62,12 @@ ul {
 }
 
 /* 用于浮动元素的父元素 */
-.clearfix:after {
-  content: ".";
+.clearfix::after {
   display: block;
   height: 0;
-  visibility: hidden;
   clear: both;
+  content: ".";
+  visibility: hidden;
 }
 
 .clearfix {
@@ -57,49 +76,60 @@ ul {
 }
 
 /* 占位符placeholder的颜色改变 */
-input:-moz-placeholder, textarea:-moz-placeholder {
+input:-moz-placeholder,
+textarea:-moz-placeholder {
   color: #999;
 }
 
-input::-moz-placeholder, textarea::-moz-placeholder {
+input::-moz-placeholder,
+textarea::-moz-placeholder {
   color: #999;
 }
 
-input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
   color: #999;
 }
 
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
   color: #999;
+}
+
+/* 清除chrome自动填充密码的样式 */
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected {
+  box-shadow: inset 0 0 0 1000px #2e3b4e;
+  -webkit-text-fill-color: #fff;
 }
 
 .text-wrap {
-  /* 针对中文换行 */
-  white-space: pre-wrap;
   /* 以字母为依据换行，数字也可以 */
   word-break: break-all;
   word-wrap: break-word;
+
+  /* 针对中文换行 */
+  white-space: pre-wrap;
 }
 
 /* 文本溢出，省略号显示 宽度自控制 */
 .text-tradition {
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  /* 兼容Opera浏览器 */
-  -o-text-overflow:ellipsis;
-  overflow:hidden;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* 选择文字后的背景色 */
 body ::selection {
   color: #333;
-  background-color: #fef032;
   text-shadow: none;
+  background-color: #fef032;
 }
 
-/* 去掉IE浏览器文本框的小X和密码框的眼睛，（只能IE10以上）*/
-::-ms-clear, ::-ms-reveal {
-  display:none;
+/* 去掉IE浏览器文本框的小X和密码框的眼睛，（只能IE10以上） */
+::-ms-clear,
+::-ms-reveal {
+  display: none;
 }
 
 /* 整个滚动条 */
@@ -109,20 +139,22 @@ body::-webkit-scrollbar {
 
 /* 滚动条轨道 */
 body::-webkit-scrollbar-track {
-  border-radius: 6px;
   background-color: transparent;
+  border-radius: 6px;
 }
 
 /* 滚动条上的滚动滑块 */
 body::-webkit-scrollbar-thumb {
-  border-radius: 6px;
   background: #7b6f6f;
+  border-radius: 6px;
 }
 
-html, body, #app {
-  padding: 0px;
-  margin: 0px;
+html,
+body,
+#app {
   height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 /* 面包屑样式 */
@@ -154,15 +186,15 @@ html, body, #app {
 
 /* 样式修复 */
 .el-menu--collapse .menu-cell > .el-menu-item .el-submenu__icon-arrow,
-.el-menu--collapse .menu-cell >.el-submenu >.el-submenu__title .el-submenu__icon-arrow {
+.el-menu--collapse .menu-cell > .el-submenu > .el-submenu__title .el-submenu__icon-arrow {
   display: none;
 }
 
-.el-menu--collapse .menu-cell >.el-menu-item span,
+.el-menu--collapse .menu-cell > .el-menu-item span,
 .el-menu--collapse .menu-cell > .el-submenu > .el-submenu__title span {
-  height: 0;
+  display: inline-block;
   width: 0;
+  height: 0;
   overflow: hidden;
   visibility: hidden;
-  display: inline-block;
 }

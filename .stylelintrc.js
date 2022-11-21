@@ -45,6 +45,8 @@ module.exports = {
     'no-eol-whitespace': true, // 禁止行尾空白符
     'string-no-newline': null, // 禁止字符串中的(未转义)换行符
     'selector-class-pattern': '^([a-z][a-z0-9]*)(-[a-z0-9]+)|(__[a-z0-9]+)*$', // 类选择器指定匹配模式
+    'property-no-vendor-prefix': null,
+    'selector-no-vendor-prefix': null,
     // 其他样式的顺序
     'order/properties-order': [
       'position',

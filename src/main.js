@@ -10,6 +10,7 @@ import '@/directive/permission'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'nprogress/nprogress.css'
 import '@/icons' // 引入icons
+import '@/assets/style/index.scss'
 
 // 模拟数据
 require('../mock')

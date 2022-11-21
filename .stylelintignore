@@ -9,5 +9,5 @@
 /public/
 node_modules
 /dist/
-/static/iconfont/
+/src/assets/iconfont/
 *.module.scss
