@@ -19,12 +19,6 @@ NProgress.configure({
   minimum: 0.3 // 初始化时的最小百分比
 })
 
-// 重复点击路由报错
-const originalPush = Router.prototype.push
-Router.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch((err) => err)
-}
-
 const router = new Router({
   mode: 'history', // 默认history模式
   routes: constantRoutes,

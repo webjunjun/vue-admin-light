@@ -13,7 +13,7 @@ import '@/icons' // 引入icons
 import '@/assets/style/index.scss'
 
 // 模拟数据
-require('../mock')
+// require('../mock')
 
 Vue.use(ElementUI)
 Vue.use(useComponent) // 注册自定义全局组件

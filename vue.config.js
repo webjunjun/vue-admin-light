@@ -10,6 +10,22 @@ const fixRequestBody = function fixRequestBody(proxyReq, req, res) {
   console.log(proxyReq, req, res)
 }
 
+const cdn = {
+  // 剔除第三方库 通过CDN方式引入资源
+  // 包名: '在项目中引入的名字'
+  // element-ui的引入名改为必须是ELEMENT 项目里的引入也要改 示例import ELEMENT from 'element-ui'
+  externals: {
+    // 'element-ui': 'ELEMENT',
+    nprogress: 'NProgress'
+  },
+  js: [
+    'https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js'
+  ],
+  css: [
+    'https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css'
+  ]
+}
+
 module.exports = defineConfig({
   transpileDependencies: true, // 对第三方依赖进行编译
   publicPath: process.env.NODE_ENV === 'production' ? '/' : '/', // 部署项目在哪个目录下
@@ -19,11 +35,7 @@ module.exports = defineConfig({
   productionSourceMap: false, // 生产环境是否开启sourcemap，默认true是
   lintOnSave: false, // 关闭项目的eslint检查 true || false || 'error'
   chainWebpack: (config) => {
-    // 通过 CDN 方式引入资源
-    // config.externals({
-    //   echarts: 'echarts',
-    //   nprogress: 'NProgress'
-    // })
+    config.externals(cdn.externals)
     const oneOfsMap = config.module.rule('scss').oneOfs.store
     oneOfsMap.forEach((item) => {
       item
@@ -87,21 +99,21 @@ module.exports = defineConfig({
     //       openAnalyzer: process.env.NODE_ENV !== 'production', // 是否打开浏览器
     //       analyzerMode: process.env.NODE_ENV === 'production' ? 'disabled' : 'server', // 分析使用哪种模式
     //       generateStatsFile: false, // 不构建分析文件
-    //       defaultSizes: 'gzip',
+    //       defaultSizes: 'parsed',
     //       analyzerHost: '127.0.0.1', // 分析服务ip
     //       analyzerPort: 'auto', // 自动分配端口
     //       reportFilename: path.resolve(__dirname, 'analyzer/index.html')
     //     })
     //   )
-    // } else {
-    //   config.plugins.push(new CompressionWebpackPlugin({
-    //     filename: '[path][base].gz',
-    //     algorithm: 'gzip',
-    //     test: new RegExp(`\\.(${['js', 'css', 'scss', 'less'].join('|')})$`),
-    //     threshold: 10240, // 大于会10KB被压缩
-    //     minRatio: 0.8 // 压缩率小于0.8的会被处理
-    //   }))
     // }
+    // config.plugins.push(new CompressionWebpackPlugin({
+    //   filename: '[path][base].gz',
+    //   algorithm: 'gzip',
+    //   test: new RegExp(`\\.(${['js', 'css', 'scss', 'less'].join('|')})$`),
+    //   threshold: 10240, // 大于会10KB被压缩
+    //   minRatio: 0.8, // 压缩率小于0.8的会被处理
+    //   deleteOriginalAssets: false // 是否删除原资源
+    // }))
   },
   devServer: {
     // open: true, // 打包时自动打开浏览器
@@ -130,6 +142,15 @@ module.exports = defineConfig({
         errors: true,
         warnings: false
       }
+    }
+  },
+  pages: {
+    index: {
+      entry: 'src/main.js', // page 的入口
+      template: 'public/index.html', // 模板来源
+      filename: 'index.html', // 在 dist/index.html 的输出
+      title: '前端项目脚手架', // 页面标题 htmlWebpackPlugin.options.title
+      cdn // 自定义选项 cdn文件
     }
   }
 })
