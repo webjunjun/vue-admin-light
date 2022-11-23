@@ -11,3 +11,4 @@ node_modules
 /dist/
 /src/assets/iconfont/
 *.module.scss
+*.md
