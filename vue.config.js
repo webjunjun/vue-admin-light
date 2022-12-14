@@ -1,8 +1,9 @@
 const path = require('path')
 const { defineConfig } = require('@vue/cli-service')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer') // 分析模板依赖大小用的，在开发时打开服务器
-const CompressionWebpackPlugin = require('compression-webpack-plugin') // 打包时压缩代码成gzip，如果服务器开启了gzip可以大大压缩大小
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer') // 分析模板依赖大小用的，在开发时打开服务器
+// const CompressionWebpackPlugin = require('compression-webpack-plugin') // 打包时压缩代码成gzip，如果服务器开启了gzip可以大大压缩大小
 const WebpackBar = require('webpackbar') // 显示打包进度条
+// const splitChunk = require('./splitChunks').splitChunk
 
 const port = process.env.PORT || 8080
 const fixRequestBody = function fixRequestBody(proxyReq, req, res) {
@@ -106,6 +107,7 @@ module.exports = defineConfig({
     //     })
     //   )
     // }
+    // 开启gzip需要生产环境服务器支持
     // config.plugins.push(new CompressionWebpackPlugin({
     //   filename: '[path][base].gz',
     //   algorithm: 'gzip',
@@ -114,6 +116,8 @@ module.exports = defineConfig({
     //   minRatio: 0.8, // 压缩率小于0.8的会被处理
     //   deleteOriginalAssets: false // 是否删除原资源
     // }))
+    // 公共代码抽离
+    // config.optimization = { splitChunks: splitChunk }
   },
   devServer: {
     // open: true, // 打包时自动打开浏览器
