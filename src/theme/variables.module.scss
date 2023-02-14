@@ -1,0 +1,16 @@
+// 侧边栏
+$menu-text: #bfcbd9;
+$menu-active-text: #409eff;
+$menu-bg: #304156;
+
+// 顶部header
+$head-bg: #060d19;
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  menutext: $menu-text;
+  menuactivetext: $menu-active-text;
+  menubg: $menu-bg;
+  headbg: $head-bg;
+}
