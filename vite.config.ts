@@ -16,8 +16,9 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // 全局导入scss
+        // 全局导入scss 以下两种形式都可以 在其他组件再次引入会报错
         additionalData: '@import "./src/theme/default.module.scss";'
+        // additionalData: '@use "./src/theme/default.module.scss" as *;'
       }
     }
   },
