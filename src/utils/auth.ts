@@ -1,15 +1,14 @@
-import Cookies from 'js-cookie'
-import { setting } from './setting'
+import Cookies from 'js-cookie';
+import { setting } from './setting';
 
 export function getToken(): string | undefined {
-  return Cookies.get(setting.TokenKey)
+  return Cookies.get(setting.TokenKey);
 }
 
 export function setToken(token: string): string | undefined {
-  return Cookies.set(setting.TokenKey, token)
+  return Cookies.set(setting.TokenKey, token);
 }
 
 export function removeToken(): void {
-  return Cookies.remove(setting.TokenKey)
+  return Cookies.remove(setting.TokenKey);
 }
-
