@@ -48,12 +48,13 @@
     "unplugin-auto-import": "^0.16.2",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.0.0",
+    "vite-plugin-html": "^3.2.0",
     "vite-plugin-vue-setup-extend": "^0.4.0",
     "vue-tsc": "^1.0.12"
   },
   "lint-staged": {
     "src/**/*.{vue,js,jsx,ts,tsx,json}": [
-      "npm run lint",
+      "eslint --fix",
       "prettier --write"
     ]
   }

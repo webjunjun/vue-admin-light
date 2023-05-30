@@ -18,12 +18,13 @@ const router = createRouter({
     {
       path: '/404',
       name: 'NotFound',
-      component: () => import('@/views/other/404.vue'),
+      component: () => import('@/views/other/notFound.vue'),
     },
   ],
 });
 
 router.beforeEach((to, from, next) => {
+  console.log(to, from);
   // 进度条开始
   start();
   next();

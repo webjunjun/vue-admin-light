@@ -9,6 +9,9 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
+import { createHtmlPlugin } from 'vite-plugin-html'
+import { setting } from './src/utils/setting'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -20,6 +23,16 @@ export default defineConfig({
     }),
     Components({
       resolvers: [ElementPlusResolver()]
+    }),
+    createHtmlPlugin({
+      // template: 'public/index.html', // 修改模板文件的位置
+      // 需要注入index.html的ejs模版的数据
+      inject: {
+        data: {
+          defaultTitle: setting.title || 'vue-admin-light',
+          htmlBaseUrl: '/'
+        }
+      }
     })
   ],
   resolve: {
@@ -38,7 +51,7 @@ export default defineConfig({
   },
   server: {
     host: 'localhost',
-    port: 8080,
+    port: 9527,
     strictPort: false, // 端口号被占用就使用下一个
     proxy: {
       '/api': {
