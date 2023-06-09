@@ -1,7 +1,7 @@
 import type { settingInterface } from '@/types/setting.type';
 
 export const setting: settingInterface = {
-  title: 'pipleline版本自动管理', // 系统名称
+  title: 'vue-admin-light后台管理系统', // 系统名称
   baseUrl: '/', // 生产环境api基础路径
   devBaseUrl: '/api', // 非生产环境api基础路径
   TokenKey: 'Admin-Token', // token在cookie里的key名

@@ -8,5 +8,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="refresh-blank"></div>
+  <div class="login-main">
+    <h1>This is an login page</h1>
+  </div>
 </template>

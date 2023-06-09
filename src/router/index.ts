@@ -3,12 +3,21 @@ import { start, close } from '@/utils/nprogress';
 import HomeView from '../views/HomeView.vue';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL), // 参数可选 配置base路径
   routes: [
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/404',
+    },
     {
       path: '/',
       name: 'HomePage',
       component: HomeView,
+    },
+    {
+      path: '/login',
+      name: 'LoginPage',
+      component: () => import('../views/other/login.vue'),
     },
     {
       path: '/about',
