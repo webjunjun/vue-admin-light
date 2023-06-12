@@ -1,5 +1,10 @@
-<script lang="ts" setup name="NotFound">
-// 内容不能为空 注释都可以 否则name不生效
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'NotFound',
+  setup() {},
+});
 </script>
 
 <template>

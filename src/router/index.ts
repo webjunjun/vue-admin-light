@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { start, close } from '@/utils/nprogress';
-import HomeView from '../views/HomeView.vue';
+import HomeView from '@/views/homeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL), // 参数可选 配置base路径
@@ -11,18 +11,18 @@ const router = createRouter({
     },
     {
       path: '/',
-      name: 'HomePage',
+      name: 'HomeView',
       component: HomeView,
     },
     {
       path: '/login',
-      name: 'LoginPage',
-      component: () => import('../views/other/login.vue'),
+      name: 'LoginView',
+      component: () => import('../views/other/loginView.vue'),
     },
     {
       path: '/about',
-      name: 'AboutPage',
-      component: () => import('../views/AboutView.vue'),
+      name: 'AboutView',
+      component: () => import('../views/aboutView.vue'),
     },
     {
       path: '/404',
