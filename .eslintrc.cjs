@@ -40,7 +40,7 @@ module.exports = {
     'spaced-comment': ['error', 'always'], // 强制在注释中 // 或 /* 使用一致的空格
     'no-multi-spaces': ['error', { ignoreEOLComments: true }], // 禁止使用多个空格
     'keyword-spacing': ['error', { before: true, after: true }], // 强制在关键字前后使用一致的空格
-    'space-before-function-paren': ['error', 'never'], // 函数声明、具名函数表达式、函数调用中，函数名和 `(` 之间不允许有空格。
+    // 'space-before-function-paren': ['error', 'never'], // 函数声明、具名函数表达式、函数调用中，函数名和 `(` 之间不允许有空格。
     'space-in-parens': ['error', 'never'], // 禁止或强制圆括号内的空格
     'object-curly-spacing': ['error', 'always'], // 要求花括号内有空格 (除了 {})
     'space-before-blocks': ['error', 'always'], // 强制在块之前使用一致的空格
@@ -59,14 +59,14 @@ module.exports = {
       svg: 'never',
       math: 'never'
     }], // 强制执行自闭式
-    'vue/max-attributes-per-line': ['error', {
-      singleline: {
-        max: 3
-      },
-      multiline: {
-        max: 1
-      }
-    }], // 强制每行的最大属性数
+    // 'vue/max-attributes-per-line': ['error', {
+    //   singleline: {
+    //     max: 3
+    //   },
+    //   multiline: {
+    //     max: 1
+    //   }
+    // }], // 强制每行的最大属性数
     'vue/html-indent': ['error', 2, {
       attribute: 1,
       baseIndent: 1,

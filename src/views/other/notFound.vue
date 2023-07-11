@@ -1,4 +1,5 @@
 <script lang="ts">
+// 这种形式所有的方法、对象都要return
 import { defineComponent } from 'vue';
 
 export default defineComponent({
