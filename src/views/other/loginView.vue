@@ -9,7 +9,7 @@
             class="login-input"
             type="text"
             autocomplete="off"
-            placeholder="请输入用户名"
+            :placeholder="t('verifyUserName')"
             clearable
           />
         </el-form-item>
@@ -19,12 +19,12 @@
             class="login-input"
             type="password"
             autocomplete="off"
-            placeholder="请输入密码"
+            :placeholder="t('verifyPassword')"
             clearable
           />
         </el-form-item>
         <el-form-item class="login-bottom">
-          <el-button class="login-submit" type="primary" @click="submitForm(ruleFormRef)">登录</el-button>
+          <el-button class="login-submit" type="primary" @click="submitForm(ruleFormRef)">{{ t('login') }}</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -33,8 +33,11 @@
 
 <script lang="ts" setup name="LoginView">
 import { reactive, ref } from 'vue';
+import useI18NPrefix from '@/hooks/useI18NPrefix';
 import type { LoginForm } from './types/login.type';
 import type { FormInstance, FormRules } from 'element-plus';
+
+const t = useI18NPrefix('loginPage');
 
 // 声明一个与子组件里的ref同名的变量，才能访问子组件实例
 const ruleFormRef = ref<FormInstance>();
@@ -43,8 +46,8 @@ const ruleForm = reactive<LoginForm>({
   password: '',
 });
 const rules = reactive<FormRules>({
-  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+  username: [{ required: true, message: t('verifyUserName'), trigger: 'blur' }],
+  password: [{ required: true, message: t('verifyPassword'), trigger: 'blur' }],
 });
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;

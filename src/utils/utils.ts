@@ -1,3 +1,5 @@
+import { TimeNumber } from './types/utils.type';
+
 /**
  * 时间戳转换成时间
  * @param {number} times 时间戳
@@ -75,8 +77,8 @@ const checkMail = (mail: string): boolean => {
  * yyyy年mm月dd日 - dd日
  * yyyy年mm月dd日 - mm月dd日
  * yyyy年mm月dd日 - yyyy年mm月dd日
- * @param {String} startDate 开始时间
- * @param {String} endDate 结束时间
+ * @param {string} startDate 开始时间
+ * @param {string} endDate 结束时间
  */
 const transRangeDate = (startDate: string, endDate: string): string => {
   const startArr: string[] = startDate.split('-');
@@ -94,7 +96,7 @@ const transRangeDate = (startDate: string, endDate: string): string => {
 
 /**
  * 手机号隐藏中间4位
- * @param {String} phone 手机号
+ * @param {string} phone 手机号
  */
 const hidePhone = (phone: string): string => {
   const reg: RegExp = /^(\d{3})\d{4}(\d{4})$/;
@@ -105,8 +107,85 @@ const hidePhone = (phone: string): string => {
 /**
  * 是否外部链接
  * @param {string} path
- * @returns {Boolean}
+ * @returns {boolean}
  */
 const isExternal = (path: string): boolean => /^(https?:|mailto:|tel:)/.test(path);
 
-export { timetrans, checkCellphone, isIdCardNo, checkMail, transRangeDate, hidePhone, isExternal };
+/**
+ * 获取今天、明天、后天、昨天、前天等指定日期
+ * 0 今天，1 明天，2 后天，-1 昨天，-2 前天
+ * @param {number} AddDayCount
+ * @return {string}
+ */
+const getDateStr = (AddDayCount: number): string => {
+  const dd: Date = new Date();
+  dd.setDate(dd.getDate() + AddDayCount);
+  const y: number = dd.getFullYear();
+  const m: number = dd.getMonth() + 1;
+  const _m: string | number = m.toString()[1] ? m : `0${m}`;
+  const d: number = dd.getDate();
+  const _d: string | number = d.toString()[1] ? d : `0${d}`;
+  return y + '-' + _m + '-' + _d;
+};
+
+/**
+ * 判断时间是在两个时间之间，还是之前或者之后
+ * @param  {string} date 要比较的时间
+ * @param  {string} start 起始时间
+ * @param  {string} end 结束时间
+ * @return {TimeNumber}
+ */
+const timeIsBetween = (date: string, start: string, end: string): TimeNumber => {
+  let dateNow: Date = new Date(date); // 获取当前时间
+  let dateBegin: Date = new Date(start); // 将-转化为/，使用new Date
+  let dateEnd: Date = new Date(end); // 将-转化为/，使用new Date
+  let beginDiff: number = dateNow.getTime() - dateBegin.getTime(); // 时间差的毫秒数
+  let beginDayDiff: number = Math.floor(beginDiff / (24 * 3600 * 1000)); // 计算出相差天数
+  let endDiff: number = dateEnd.getTime() - dateNow.getTime(); // 时间差的毫秒数
+  let endDayDiff: number = Math.floor(endDiff / (24 * 3600 * 1000)); // 计算出相差天数
+  if (endDayDiff < 0) {
+    // 已过期
+    return -1;
+  }
+  if (beginDayDiff < 0) {
+    // 还没到时间
+    return 1;
+  }
+  // 两者之间
+  return 0;
+};
+
+/**
+ * 校验车牌号
+ * @param  {string} vehicleNumber 参数说明
+ * @return {boolean}
+ */
+const isVehicleNumber = (vehicleNumber: string): boolean => {
+  // 新能源车
+  const xreg: RegExp =
+    /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))/;
+  // 普通汽车
+  const creg: RegExp =
+    /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/;
+
+  if (vehicleNumber.length == 7) {
+    return creg.test(vehicleNumber);
+  } else if (vehicleNumber.length == 8) {
+    return xreg.test(vehicleNumber);
+  } else {
+    return false;
+  }
+};
+
+export {
+  timetrans,
+  checkCellphone,
+  isIdCardNo,
+  checkMail,
+  transRangeDate,
+  hidePhone,
+  isExternal,
+  getDateStr,
+  timeIsBetween,
+  isVehicleNumber,
+};

@@ -1,4 +1,4 @@
-import type { settingInterface } from '@/types/setting.type';
+import type { settingInterface } from '@/utils/types/utils.type';
 
 export const setting: settingInterface = {
   title: 'vue-admin-light后台管理系统', // 系统名称

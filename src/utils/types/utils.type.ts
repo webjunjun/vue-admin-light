@@ -8,3 +8,9 @@ export interface settingInterface {
   btnPermissionBoolean: boolean;
   multipleTabs: boolean;
 }
+
+export enum TimeNumber {
+  future = 1,
+  past = -1,
+  now = 0,
+}
