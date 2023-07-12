@@ -1,6 +1,6 @@
 import { createI18n } from 'vue-i18n'; // 国际化包
-import zhCN from './translations/zhCN.json';
-import enUS from './translations/enUS.json';
+import zhCN from './translations/zhCN';
+import enUS from './translations/enUS';
 
 // 将zhCN文件的字段定义为主类型，其他类型文件必须包含这些字段
 type MessageSchema = typeof zhCN;
