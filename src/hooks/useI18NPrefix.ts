@@ -1,4 +1,4 @@
-import { useI18n } from 'vue-i18n';
+import { useI18n } from 'vue-i18n'
 
 /**
  * i18n方法设置前缀 避免重复输入
@@ -8,7 +8,7 @@ import { useI18n } from 'vue-i18n';
  * @time 2023-07-12 16:17:40
  */
 function useI18NPrefix(prefix?: string): Function {
-  const { t } = useI18n();
+  const { t } = useI18n()
 
   /**
    * 对t方法的重新封装
@@ -17,15 +17,15 @@ function useI18NPrefix(prefix?: string): Function {
    * @time 2023-07-12 16:15:48
    */
   const cachedTranslateFn = (key: string): string => {
-    let translationKey = key;
+    let translationKey = key
     if (prefix) {
-      translationKey = `${prefix}.${translationKey}`;
+      translationKey = `${prefix}.${translationKey}`
     }
 
-    return t(translationKey);
-  };
+    return t(translationKey)
+  }
 
-  return cachedTranslateFn;
+  return cachedTranslateFn
 }
 
-export default useI18NPrefix;
+export default useI18NPrefix

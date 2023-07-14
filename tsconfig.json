@@ -1,6 +1,6 @@
 {
   // "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/"],// 需要检测的文件
+  "include": ["*.d.ts", "src/"],// 需要检测的文件
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
     "composite": true,

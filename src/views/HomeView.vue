@@ -1,5 +1,5 @@
 <script setup lang="ts" name="HomeView">
-import TheWelcome from '../components/TheWelcome.vue';
+import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>

@@ -25,82 +25,45 @@ module.exports = {
   },
   plugins: ['vue', 'prettier'],
   rules: {
-    'indent': ['error', 2], // 缩进，空格
-    'space-infix-ops': 'error', // 要求中缀操作符周围有空格
-    'quotes': ['error', 'single', {
-      allowTemplateLiterals: true
-    }], // 强制使用一致的反勾号、双引号或单引号
-    'quote-props': ['error', 'consistent-as-needed', {
-      keywords: true
-    }], // 要求对象字面量属性名称使用引号
-    'key-spacing': ['error', {
-      beforeColon: false,
-      mode: 'strict'
-    }], // 强制在对象字面量的键和值之间使用一致的空格
-    'spaced-comment': ['error', 'always'], // 强制在注释中 // 或 /* 使用一致的空格
-    'no-multi-spaces': ['error', { ignoreEOLComments: true }], // 禁止使用多个空格
-    'keyword-spacing': ['error', { before: true, after: true }], // 强制在关键字前后使用一致的空格
-    // 'space-before-function-paren': ['error', 'never'], // 函数声明、具名函数表达式、函数调用中，函数名和 `(` 之间不允许有空格。
-    'space-in-parens': ['error', 'never'], // 禁止或强制圆括号内的空格
-    'object-curly-spacing': ['error', 'always'], // 要求花括号内有空格 (除了 {})
-    'space-before-blocks': ['error', 'always'], // 强制在块之前使用一致的空格
-    'no-useless-return': 'error', // 禁止多余的 return 语句
-    // 'no-lonely-if': 'error', // 禁止 if 语句作为唯一语句出现在 else 语句块中
-    'arrow-spacing': ['error', { before: true, after: true }], // 要求箭头函数的箭头之前或之后有空格
-    'comma-spacing': ['error', { before: false, after: true }], // 禁止在逗号前使用空格,要求在逗号后使用一个或多个空格
-    'arrow-parens': ['error', 'as-needed'], // 要求箭头函数的参数使用圆括号
-    'no-useless-escape': 'off', // 关闭禁用不必要的转义
-    'vue/html-self-closing': ['error', {
-      html: {
-        'void': 'always',
-        'normal': 'never',
-        'component': 'always'
-      },
-      svg: 'never',
-      math: 'never'
-    }], // 强制执行自闭式
-    // 'vue/max-attributes-per-line': ['error', {
-    //   singleline: {
-    //     max: 3
-    //   },
-    //   multiline: {
-    //     max: 1
-    //   }
-    // }], // 强制每行的最大属性数
-    'vue/html-indent': ['error', 2, {
-      attribute: 1,
-      baseIndent: 1,
-      closeBracket: 0,
-      alignAttributesVertically: false,
-      ignores: []
-    }], // 执行一致的缩进
-    'vue/first-attribute-linebreak': ['error', {
-      singleline: 'beside',
-      multiline: 'below'
-    }], // 强制第一个属性的位置
-    'vue/html-closing-bracket-newline': ['error', {
-      singleline: 'never',
-      multiline: 'always'
-    }], // 在标签的右括号之前要求或禁止换行
-    'vue/mustache-interpolation-spacing': ['error', 'always'],
-    'vue/no-lone-template': ['error', {
-      ignoreAccessible: false
-    }], // 插值中强制统一间距
-    'vue/attributes-order': ['error', {
-      order: [
-        'DEFINITION',
-        'LIST_RENDERING',
-        'CONDITIONALS',
-        'RENDER_MODIFIERS',
-        'GLOBAL',
-        ['UNIQUE', 'SLOT'],
-        'TWO_WAY_BINDING',
-        'OTHER_DIRECTIVES',
-        'OTHER_ATTR',
-        'EVENTS',
-        'CONTENT'
-      ],
-      alphabetical: false
-    }]// 强制执行属性顺序
+    "prettier/prettier": ["error", 
+    // prettier 规则配置
+    {
+      'endOfLine': 'auto', // 换行cr检查
+      'printWidth': 120, // 每行最多120字
+      'semi': false, // 不使用分号
+      'singleQuote': true, // 单引号
+      'tabWidth': 2, // tab键是2个空格
+      'trailingComma': 'none', // 末尾不强制要求逗号
+      'bracketSpacing': true // 在一行的object里花括号前后使用空格 { foo: bar }
+    }],
+    // airbnb
+    'import/no-unresolved': 'off', // 引入模块路径检查（vue难以解析路径）
+    'import/extensions': 'off', // import文件不加后缀检查
+    'import/no-extraneous-dependencies': 'off', // 无外来依赖检查（要求只能用npm依赖，导致无法使用cdn）
+    'import/prefer-default-export': 'off', // 优先使用export default
+    // eslint
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off', // 生产时无console语句
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off', // 生产时无debugger关键字
+    'linebreak-style': 'off', // 换行检查
+    'func-names': 'off', // 函数必须命名（导致匿名函数无法使用）
+    'no-restricted-syntax': 'off', // 禁用特定语法（导致一些语法无法使用：for of）
+    'no-use-before-define': ['error', { // 函数必须先定义后使用
+      'functions': false
+    }],
+    'no-plusplus': 'off', // 禁用 ++ --
+    'no-continue': 'off', // 禁用 continue
+    'no-param-reassign': 'off', // 禁止函数的参数重写赋值
+    'class-methods-use-this': 'off', // class中的方法必须使用this
+    'no-unused-expressions': 'off',
+    'semi': ['error', 'never'], // 永远不使用分号
+    'comma-dangle': ['error', {
+      'arrays': 'never',
+      'objects': 'never',
+      'imports': 'never',
+      'exports': 'never',
+      'functions': 'never'
+    }],
+    // vue
+    'vue/multi-word-component-names': 'off'
   }
 }

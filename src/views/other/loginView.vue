@@ -32,33 +32,33 @@
 </template>
 
 <script lang="ts" setup name="LoginView">
-import { reactive, ref } from 'vue';
-import useI18NPrefix from '@/hooks/useI18NPrefix';
-import type { LoginForm } from './types/login.type';
-import type { FormInstance, FormRules } from 'element-plus';
+import { reactive, ref } from 'vue'
+import useI18NPrefix from '@/hooks/useI18NPrefix'
+import type { LoginForm } from './types/login.type'
+import type { FormInstance, FormRules } from 'element-plus'
 
-const t = useI18NPrefix('loginPage');
+const t = useI18NPrefix('loginPage')
 
 // 声明一个与子组件里的ref同名的变量，才能访问子组件实例
-const ruleFormRef = ref<FormInstance>();
+const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive<LoginForm>({
   username: '',
-  password: '',
-});
+  password: ''
+})
 const rules = reactive<FormRules>({
   username: [{ required: true, message: t('verifyUserName'), trigger: 'blur' }],
-  password: [{ required: true, message: t('verifyPassword'), trigger: 'blur' }],
-});
+  password: [{ required: true, message: t('verifyPassword'), trigger: 'blur' }]
+})
 const submitForm = async (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
+  if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
-      console.log('submit!');
+      console.log('submit!')
     } else {
-      console.log('error submit!', fields);
+      console.log('error submit!', fields)
     }
-  });
-};
+  })
+}
 </script>
 
 <style lang="scss" scoped>
