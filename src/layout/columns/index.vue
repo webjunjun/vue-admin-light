@@ -1,3 +1,7 @@
+<script lang="ts" setup name="ColumnsLayout">
+//
+</script>
+
 <template>
   <div class="common-layout">
     <el-container>
@@ -10,7 +14,3 @@
     </el-container>
   </div>
 </template>
-
-<script lang="ts" setup name="ColumnsLayout">
-//
-</script>

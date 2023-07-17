@@ -12,6 +12,7 @@ function useI18NPrefix(prefix?: string): Function {
 
   /**
    * 对t方法的重新封装
+   * @author: 刘军
    * @param  {string} key 翻译的关键字
    * @return {string}
    * @time 2023-07-12 16:15:48
