@@ -49,7 +49,7 @@ export default defineConfig({
     }
   },
   server: {
-    host: 'localhost',
+    host: '0.0.0.0', // 显示IP地址开发方式
     port: 9527,
     strictPort: false, // 端口号被占用就使用下一个
     proxy: {

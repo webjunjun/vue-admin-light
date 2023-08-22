@@ -11,6 +11,11 @@ const router = createRouter({
       redirect: '/404'
     },
     {
+      path: '/redirect/:pathMatch(.*)*',
+      name: 'BlankView',
+      component: () => import('@/views/other/blankView.vue')
+    },
+    {
       path: '/login',
       name: 'LoginView',
       component: () => import('../views/other/loginView.vue')
